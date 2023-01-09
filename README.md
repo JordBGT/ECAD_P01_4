@@ -14,7 +14,7 @@ be verified against records stored in the database
 ---------------------------------------------------------------------------------------------------------------------------
 Individual
 ---------------------------------------------------------------------------------------------------------------------------
-1. Membership Registration
+1. Membership Registration (Jordan Bu Guan Ting)
 
 Basic Requirements
 - Allow a shopper to register as a member. Appropriate input data validation
@@ -38,7 +38,7 @@ products or services provided by the merchant. The feedback is to be saved
 in the database and be viewed by everybody. It cannot be retrieved for editing
 once it is submitted.
 ---------------------------------------------------------------------------------------------------------------------------
-2. Product Catalog
+2. Product Catalog (Luo Yu Xuan)
 
 Basic Requirements
 - Display the Product Catalogue.
@@ -70,7 +70,7 @@ display the price before offer and strike it off.
 - Provide an advanced product search feature that returns a list of products that
 match certain search criteria, e.g. price range, products currently on offer.
 ---------------------------------------------------------------------------------------------------------------------------
-3. Shopping Cart
+3. Shopping Cart (Ho Zhao Yan)
 
 Basic Requirements
 - Able to add a product to the shopping cart.
@@ -98,7 +98,7 @@ more than S$200.
 each item in the shopping cart, e.g. 2 pcs of Product 1 and 3 pcs of Product 2
 in cart, the total number of items in cart should be 5.
 ---------------------------------------------------------------------------------------------------------------------------
-4. Checkout
+4. Checkout (Ng Jun Heng)
 
 Basic Requirements
 - Delivery is within Singapore only and there are 2 delivery modes. Calculate the
