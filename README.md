@@ -15,6 +15,7 @@ be verified against records stored in the database
 Individual
 ---------------------------------------------------------------------------------------------------------------------------
 1. Membership Registration
+
 Basic Requirements
 - Allow a shopper to register as a member. Appropriate input data validation
 should be incorporated.
@@ -38,6 +39,7 @@ in the database and be viewed by everybody. It cannot be retrieved for editing
 once it is submitted.
 ---------------------------------------------------------------------------------------------------------------------------
 2. Product Catalog
+
 Basic Requirements
 - Display the Product Catalogue.
   o The product catalogue should contain a “Categories” page showing all
@@ -69,6 +71,7 @@ display the price before offer and strike it off.
 match certain search criteria, e.g. price range, products currently on offer.
 ---------------------------------------------------------------------------------------------------------------------------
 3. Shopping Cart
+
 Basic Requirements
 - Able to add a product to the shopping cart.
 When the shopper selects a product in the catalogue and adds to his shopping
@@ -96,6 +99,7 @@ each item in the shopping cart, e.g. 2 pcs of Product 1 and 3 pcs of Product 2
 in cart, the total number of items in cart should be 5.
 ---------------------------------------------------------------------------------------------------------------------------
 4. Checkout
+
 Basic Requirements
 - Delivery is within Singapore only and there are 2 delivery modes. Calculate the
 delivery charge based on the mode of delivery. Delivery charge is $5 per trip
