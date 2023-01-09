@@ -1,0 +1,7 @@
+{
+    "open-php-html-js-in-browser.documentRootFolder": "C:\\xampp\\htdocs\\",
+    // CHANGE: change customhost based on your device
+    "open-php-html-js-in-browser.customHost": "localhost:80",
+    "open-php-html-js-in-browser.selectedBrowser": "Chrome",
+    "open-php-html-js-in-browser.urlToOpen": "custom"
+}

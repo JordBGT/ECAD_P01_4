@@ -1,19 +1,29 @@
 body {
-    font-family : Arial;
-    font-size : 14px;
+    background-color: #F7E1FF;
+    font-family: Arial;
+    font-size: 14px;
 }
 
 .page-title {
-    font-size:24px; 
-	font-weight:bold;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .cart-header {
-	/*background-color: #0040FF;*/
-	background-color: #017CA7;
-	color: white;
+    /*background-color: #0040FF;*/
+    background-color: #017CA7;
+    color: white;
 }
 
 .bg-custom {
-	background-color: #086464;
+    background-color: #DAAFF4;
+}
+
+.nav-link {
+    color: #4E004A;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    font-weight: bold;
 }

@@ -1,4 +1,5 @@
-        </div>
+                </div>
+            </div>
             <!-- 4th row -->
             <div class="row">
                 <div class="col-sm-12" style="text-align:right">
