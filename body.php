@@ -1,6 +1,6 @@
 <!-- 3rd row-->
             <div class="row">
-                <div class="col-sm-12" "></div>
+                <div class="col-sm-12"></div>
             </div>
             <!-- Search Bar -->
                 <div style="width:80%; margin:auto; margin-top: 2.5%;"> <!-- Container -->
