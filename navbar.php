@@ -26,7 +26,7 @@ if(isset($_SESSION["ShopperName"])) {
 ?>
 <!-- To Do 3 (Practical 1) - 
      Display a navbar which is visible before or after collapsing -->
-<nav class="navbar navbar-expand-md bg-custom navbar-light sticky-top">
+<nav class="navbar navbar-expand-md bg-custom navbar-light">
     <a href="#" class="navbar-brand mb-0">
     <img src="Images/logo.png" alt="Logo" class="d-inline-block align-top">
     </a>
@@ -44,8 +44,11 @@ if(isset($_SESSION["ShopperName"])) {
      Define a collapsible navbar -->
 <nav class="navbar navbar-expand-md bg-custom sticky-top">
     <!-- Collapsible part of navbar -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse bg-custom" id="collapsibleNavbar">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Home</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="category.php">Product Categories</a>
             </li>

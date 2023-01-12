@@ -4,7 +4,11 @@ session_start();
 // Include the Page Layout header
 include("header.php"); 
 ?>
-<!-- include image  -->
+
+<?php 
+// Include the Page Layout body content
+include("body.php"); 
+?>
 
 <?php 
 // Include the Page Layout footer

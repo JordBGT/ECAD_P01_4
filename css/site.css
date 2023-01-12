@@ -1,7 +1,7 @@
 body {
     background-color: #F7E1FF;
-    font-family: Arial;
     font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .page-title {
@@ -26,4 +26,23 @@ body {
 .nav-link:hover {
     color: #ffffff;
     font-weight: bold;
+}
+
+.search-button {
+    background-color: #DAAFF4;
+    color: #4E004A;
+    border: none;
+    border-radius: 50px;
+    width: 100px;
+    height: 35px;
+}
+
+.search-button:hover {
+    color: #ffffff;
+    font-weight: bold;
+    border: 1px solid #4E004A;
+}
+
+.login-form {
+    background-color: #DAAFF4;
 }

@@ -1,7 +1,5 @@
-                </div>
-            </div>
-            <!-- 4th row -->
-            <div class="row">
+            <!-- Footer row -->
+            <div class="row px-3">
                 <div class="col-sm-12" style="text-align:right">
                     <hr />
                     Do you need help? Please email to:
