@@ -19,11 +19,21 @@ $stmt->close();
 
 // To Do 1:  Display Product information. Starting ....
 while ($row = $result->fetch_array()){
+    $isOffered = $row['Offered'];
+    $formattedPrice = number_format($row["Price"], 2);
+    $formattedOfferedPrice = number_format($row['OfferedPrice'], 2);
+	$offerStartDate = $row['OfferStartDate'];
+	$offerEndDate = $row['OfferEndDate'];
     //Display page header
     //Product name is read from the "ProductTitle" column of "product" table
     echo "<div class='row' >";
     echo "<div class='col-sm-12' style='padding:5px'>";
-    echo "<span class='page-title'>$row[ProductTitle]</span>";
+    if($isOffered == 1 && $offerStartDate <= date("Y-m-d") && $offerEndDate >= date("Y-m-d")){
+		echo "<p style='font-size:2em;'>$row[ProductTitle] <span style='color:red'>(Now On Offer!!)</span></p>";
+	}else{
+		echo "<pstyle='font-size:2em;'>$row[ProductTitle]</p>";
+	}
+
     echo "</div>";
     echo "</div>";
 
@@ -54,9 +64,15 @@ while ($row = $result->fetch_array()){
     echo "<p><img src=$img  /></p>";
 
     //Right column - Display the product's price
-    $formattedPrice = number_format($row["Price"], 2);
-    echo "Price:<span style='font-weight:bold; color:red'>
-     S$ $formattedPrice</span>";
+
+    // echo "Price:<span style='font-weight:bold; color:red'>
+    //  S$ $formattedPrice</span>";
+    if($isOffered == 1 && $offerStartDate <= date("Y-m-d") && $offerEndDate >= date("Y-m-d")){
+		echo "<p>Original Price: <span style='text-decoration:line-through'>S$ $formattedPrice</span> </p>";
+		echo "<p><span style='font-weight:bold; color:red; font-size:1.5em'>Offered Price: S$ $formattedOfferedPrice</span></p>";
+	}else{
+		echo "<p style='font-size:1.5em'>Price: <span style='font-weight:bold; color:red;'> S$ $formattedPrice</span></p>";
+	}
 }
 
 // To Do 1:  Ending ....

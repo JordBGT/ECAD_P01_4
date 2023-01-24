@@ -18,7 +18,7 @@ include_once("mysql_conn.php");
 
 // To Do:  Starting ....
 $cid=$_GET['cid'];
-$qry = "SELECT p.ProductID, p.ProductTitle, p.ProductImage, p.Price, p.Quantity
+$qry = "SELECT p.ProductID, p.ProductTitle, p.ProductImage, p.Price, p.Quantity, p.Offered, p.OfferedPrice,p.OfferStartDate,p.OfferEndDate
 		FROM CatProduct cp INNER JOIN Product p ON cp.ProductID = p.ProductID
 		WHERE cp.CategoryID =? Order By p.ProductTitle";
 
@@ -35,18 +35,39 @@ while ($row = $result ->fetch_array()){
 	//     			display the selling price in a new paragraph
 	$product = "productDetails.php?pid=$row[ProductID]";
 	$formattedPrice = number_format($row['Price'], 2);
+	$formattedOfferedPrice = number_format($row['OfferedPrice'], 2);
+	$isOffered = $row['Offered'];
+	$offerStartDate = $row['OfferStartDate'];
+	$offerEndDate = $row['OfferEndDate'];
 	echo "<div class='col-8'>";
-	echo "<p><a href=$product>$row[ProductTitle]</a></p>";
-	echo "Price:<span style='font-weight:bold; color:red;'>
-		S$ $formattedPrice</span>";
-	echo "</div>";
+	// Display the product name with a link, enlarge the link
+	//if the product is offered, append a "on offer" after the product name with red color
+	if($isOffered == 1 && $offerStartDate <= date("Y-m-d") && $offerEndDate >= date("Y-m-d")){
+		echo "<p><a href='$product' style='font-size:1.5em; color:blue'>$row[ProductTitle] <span style='color:red'>(Now On Offer!!)</span></a></p>";
+	}else{
+		echo "<p><a href='$product' style='font-size:1.5em; color:blue'>$row[ProductTitle]</a></p>";
+	}
 
-	//Right column - display the product image
+	if($isOffered == 1 && $offerStartDate <= date("Y-m-d") && $offerEndDate >= date("Y-m-d")){
+		echo "<p>Original Price: <span style='text-decoration:line-through'>S$ $formattedPrice</span> </p>";
+		echo "<p><span style='font-weight:bold; color:red; font-size:1.5em'>Offered Price: S$ $formattedOfferedPrice</span></p>";
+	}else{
+		echo "<p style='font-size:1.5em'>Price: <span style='font-weight:bold; color:red;'> S$ $formattedPrice</span></p>";
+	}
+	
+
 	$img = "./Images/products/$row[ProductImage]";
+	//display image with a link to product details page, set the image size to 200px
+	echo "<div><a href=$product><img src=$img width='200px'></a></div>";
+	echo "</div>";
+	//Right column - display the add to cart function
 	echo "<div class='col-4'>";
-	echo "<img src='$img' />";
-	echo "</div>"; // End of col-4
+	
+
+	echo "</div>";
 	echo "</div>"; // End of row
+	echo "<hr style='border:1px solid #ccc'>";
+    echo "<div style='height:20px'></div>";
 	
 }
 

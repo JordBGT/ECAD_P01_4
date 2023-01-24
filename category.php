@@ -26,16 +26,19 @@ while ($row = $result ->fetch_array()){
     $catname = urlencode($row['CatName']);
     $catproduct = "catProduct.php?cid=$row[CategoryID]&catName=$catname";
     echo "<div class='col-8'>";
-    echo "<p><a href=$catproduct>$row[CatName]</a></p>";
+    // Display the category name with a link, enlarge the link
+    echo "<p><a href='$catproduct' style='font-size:1.5em'>$row[CatName]</a></p>";
     echo "$row[CatDesc]";
-    echo "</div>"; 
-
-
     $img = "./Images/category/$row[CatImage]";
-    echo "<div class='col-4'>";
-    echo "<img src='$img' />";
-    echo "</div>"; // End of col-4
+    //display the category image, add the link to the category product page, set the image size to 200px
+    echo "<div><a href='$catproduct'><img src='$img' width='200px'></a></div>";
+    echo "</div>"; 
     echo "</div>"; // End of row
+    // add some space between each category, with a horizontal line
+    echo "<hr style='border:1px solid #ccc'>";
+    echo "<div style='height:20px'></div>";
+
+
     
 }
 
