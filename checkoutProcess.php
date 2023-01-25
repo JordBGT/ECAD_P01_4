@@ -43,10 +43,21 @@ if($_POST) //Post Data received from Shopping cart page.
 	  	$paypal_data .= '&L_PAYMENTREQUEST_0_NAME'.$key.'='.urlencode($item["name"]);
 		$paypal_data .= '&L_PAYMENTREQUEST_0_NUMBER'.$key.'='.urlencode($item["productId"]);
 	}
+
+	//Get Form Data
+	$_SESSION["BillName"] = $_POST["BillName"];
+    $_SESSION["BillAddress"] = $_POST["BillAddress"];
+	$_SESSION["ShipPhone"] = $_POST["ShipPhone"];
+    $_SESSION["ShipEmail"] = $_POST["ShipEmail"];
+	$_SESSION["Message"] = $_POST["Message"];
+	$_SESSION["BillPhone"] = $_POST["BillPhone"];
+    $_SESSION["BillEmail"] = $_POST["BillEmail"];
+	$_SESSION["DeliveryDate"] =$_POST["DeliveryDate"];
+	$_SESSION["DeliveryTime"] =$_POST["DeliveryTime"];
 	
 	// To Do 1A: Compute GST amount 7% for Singapore, round the figure to 2 decimal places
 	// $_SESSION["Tax"] = round($_SESSION["SubTotal"] * 0.07, 2);
-    $_SESSION["Tax"] = 0;
+    $_SESSION["Tax"] = round($_SESSION["SubTotal"] * ($_SESSION["TaxFromCurrentYear"]/100),2);
 	
 	// To Do 1B: Compute Shipping charge - S$2.00 per trip
     if($_SESSION["ModeOfDelivery"] == "Normal"){
@@ -142,7 +153,7 @@ if(isset($_GET["token"]) && isset($_GET["PayerID"]))
 	if("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || 
 	   "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])) 
 	{
-		// To Do 5 (DIY): Update stock inventory in product table after successful checkout
+		//Update stock inventory in product table after successful checkout
 		//Retrieve all the products from the shopping cart, and reduce the stock quantity by 1 in the product table by product purchased
 		foreach($_SESSION['Items'] as $key=>$item)
 		{
@@ -210,11 +221,13 @@ if(isset($_GET["token"]) && isset($_GET["PayerID"]))
 			// To Do 3: Insert an Order record with shipping information
 			//          Get the Order ID and save it in session variable.
 			$qry = "INSERT INTO orderdata (ShipName, ShipAddress, ShipCountry,
-						 ShipEmail, ShopCartId) 
-					VALUES (?, ?, ?, ?, ?)";
+						 ShipEmail, ShipPhone, ShopCartId, BillName, BillPhone, BillEmail, DeliveryDate, DeliveryTime, DeliveryMode, Message) 
+					VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			$stmt = $conn->prepare($qry);
-			$stmt->bind_param("ssssi", $ShipName, $ShipAddress, $ShipCountry,
-			                           $ShipEmail, $_SESSION["Cart"]);
+			$stmt->bind_param("sssssisssssss", $ShipName, $ShipAddress, $ShipCountry,
+			                           $ShipEmail, $_SESSION["ShipPhone"], $_SESSION["Cart"], $_SESSION["BillName"], $_SESSION["BillPhone"],
+										$_SESSION["BillEmail"], $_SESSION["DeliveryDate"], $_SESSION["DeliveryTime"], $_SESSION["ModeOfDelivery"],
+										$_SESSION["Message"]);
 
 			$stmt->execute();
 			$stmt->close();
