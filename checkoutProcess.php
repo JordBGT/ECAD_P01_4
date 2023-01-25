@@ -49,6 +49,7 @@ if($_POST) //Post Data received from Shopping cart page.
     $_SESSION["BillAddress"] = $_POST["BillAddress"];
 	$_SESSION["ShipPhone"] = $_POST["ShipPhone"];
     $_SESSION["ShipEmail"] = $_POST["ShipEmail"];
+	$_SESSION["BillCountry"] = "Singapore";
 	$_SESSION["Message"] = $_POST["Message"];
 	$_SESSION["BillPhone"] = $_POST["BillPhone"];
     $_SESSION["BillEmail"] = $_POST["BillEmail"];
@@ -221,13 +222,13 @@ if(isset($_GET["token"]) && isset($_GET["PayerID"]))
 			// To Do 3: Insert an Order record with shipping information
 			//          Get the Order ID and save it in session variable.
 			$qry = "INSERT INTO orderdata (ShipName, ShipAddress, ShipCountry,
-						 ShipEmail, ShipPhone, ShopCartId, BillName, BillPhone, BillEmail, DeliveryDate, DeliveryTime, DeliveryMode, Message) 
-					VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+						 ShipEmail, ShipPhone, ShopCartId, BillName, BillAddress, BillCountry, BillPhone, BillEmail, DeliveryDate, DeliveryTime, DeliveryMode, Message) 
+					VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			$stmt = $conn->prepare($qry);
-			$stmt->bind_param("sssssisssssss", $ShipName, $ShipAddress, $ShipCountry,
-			                           $ShipEmail, $_SESSION["ShipPhone"], $_SESSION["Cart"], $_SESSION["BillName"], $_SESSION["BillPhone"],
-										$_SESSION["BillEmail"], $_SESSION["DeliveryDate"], $_SESSION["DeliveryTime"], $_SESSION["ModeOfDelivery"],
-										$_SESSION["Message"]);
+			$stmt->bind_param("sssssisssssssss", $ShipName, $ShipAddress, $ShipCountry,
+			                           $ShipEmail, $_SESSION["ShipPhone"], $_SESSION["Cart"], $_SESSION["BillName"], $_SESSION["BillAddress"], $_SESSION["BillCountry"],
+									   $_SESSION["BillPhone"], $_SESSION["BillEmail"], $_SESSION["DeliveryDate"], $_SESSION["DeliveryTime"], 
+									   $_SESSION["ModeOfDelivery"], $_SESSION["Message"]);
 
 			$stmt->execute();
 			$stmt->close();
