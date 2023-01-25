@@ -1,22 +1,23 @@
 <?php
+session_start();
 include("header.php"); // Include the Page Layout header
 
-// if (! isset($_SESSION["ShopperID"])) { // Check if user logged in 
-// 	// redirect to login page if the session variable shopperid is not set
-// 	header ("Location: login.php");
-// 	exit;
-// }
+if (! isset($_SESSION["ShopperID"])) { // Check if user logged in 
+	// redirect to login page if the session variable shopperid is not set
+	header ("Location: login.php");
+	exit;
+}
 
 include_once("mysql_conn.php");
 // To Do 1 (Practical 4): 
 // Retrieve from database and display shopping cart in a table
 $qry = "SELECT *, (Price*Quantity) AS Total
-        FROM ShopCartItem WHERE ShopCartID=1";
-$stmt = $conn->prepare($qry);
-// $stmt->bind_param("i", $_SESSION["Cart"]); //"i" - integer
-$stmt->execute();
-$result = $stmt->get_result();
-$stmt->close();
+            FROM ShopCartItem WHERE ShopCartID=?";
+    $stmt = $conn->prepare($qry);
+    $stmt->bind_param("i", $_SESSION["Cart"]); //"i" - integer
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
 
 if ($result->num_rows > 0) {
     // To Do 2 (Practical 4): Format and display 
@@ -54,7 +55,6 @@ if ($result->num_rows > 0) {
 			echo "<td>$formattedTotal</td>";
 			echo "</tr>";
 
-            // To Do 6 (Practical 5):
 		    // Store the shopping cart items in session variable as an associate array
 			$_SESSION["Items"][]= array("productID"=>$row["ProductID"],
             "name"=>$row["Name"],
@@ -68,13 +68,13 @@ if ($result->num_rows > 0) {
 		echo "</table>"; // End of table
 		echo "</div>"; // End of Bootstrap responsive table
 				
-		// To Do 4 (Practical 4): 
+
 		// Display the subtotal at the end of the shopping cart
 		echo "<p style='text-align:right; font-size:20px'> 
 				Subtotal = S$".number_format($subTotal,2);
 		$_SESSION["SubTotal"] = round($subTotal,2);
         
-        //Displaying Mode of Delivery option
+        //Displaying and getting input for Mode of Delivery
         echo "<br/>";
         echo"<td>";
         echo "<form method = 'post'>";
@@ -88,7 +88,7 @@ if ($result->num_rows > 0) {
         echo "</form>";
         echo"<td>";
 
-
+        // Checking Mode of Delivery
         if(isset($_POST['mod'])){
             if($_POST['mod'] == "Normal"){
                 $_SESSION["ModeOfDelivery"] = "Normal";
@@ -101,8 +101,6 @@ if ($result->num_rows > 0) {
 
                 echo "<p style='font-size:20px'> 
 				Total = S$".number_format($totalAmount,2);
-
-                // $_SESSION["TotalAmount"] = $totalAmount;
 
                 // Add PayPal Checkout button on the shopping cart page
 		        echo "<form method='post' action='checkoutProcess.php'>";
@@ -121,13 +119,29 @@ if ($result->num_rows > 0) {
 
                 echo "<p style='font-size:20px'> 
 				Total = S$".number_format($totalAmount,2);
-                // $_SESSION["TotalAmount"] = $totalAmount;
 
                 // Add PayPal Checkout button on the shopping cart page
 		        echo "<form method='post' action='checkoutProcess.php'>";
 		        echo "<input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>";
 		        echo "</form></p>";
             }
+
+            // Getting Name for displaying at orderConfirmed.php
+            $qry3 = "SELECT * 
+            FROM Shopper WHERE ShopperID=?";
+            $stmt = $conn->prepare($qry3);
+            $stmt->bind_param("i", $_SESSION["ShopperID"]); //"i" - integer
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
+
+	        if ($result->num_rows > 0) {
+                while ($row = $result->fetch_array()) {
+                    $SESSION["ShopperName"] = $row["Name"];
+                }
+
+            }
+
         }
 
 
