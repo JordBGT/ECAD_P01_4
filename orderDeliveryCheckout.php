@@ -127,9 +127,9 @@ if ($result->num_rows > 0) {
             }
 
             // Getting Name for displaying at orderConfirmed.php
-            $qry2 = "SELECT * 
+            $qry3 = "SELECT * 
             FROM Shopper WHERE ShopperID=?";
-            $stmt = $conn->prepare($qry2);
+            $stmt = $conn->prepare($qry3);
             $stmt->bind_param("i", $_SESSION["ShopperID"]); //"i" - integer
             $stmt->execute();
             $result = $stmt->get_result();

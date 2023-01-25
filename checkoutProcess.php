@@ -27,12 +27,12 @@ if($_POST) //Post Data received from Shopping cart page.
 		if ($row["Quantity"] < $item["quantity"]) {
 			echo "Product $productId: $item[name] is out of stock!<br />";
 			echo "Please return to shopping cart to amend your purchase.<br />";
+			echo "<a href='index.php'>Continue shopping</a></p>";
 			include("footer.php");
 			exit;
 		}
 	}
 	
-	// End of To Do 6
 	
 	$paypal_data = '';
 	// Get all items from the shopping cart, concatenate to the variable $paypal_data
