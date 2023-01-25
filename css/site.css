@@ -22,8 +22,14 @@ body {
 
 .nav-link,
 .forgetpassword-link,
-.register-link {
+.register-link,
+.category-link {
     color: #4E004A;
+}
+
+.category-link:hover {
+    color: #4E004A;
+    font-weight: bold;
 }
 
 .nav-link:hover,
@@ -71,4 +77,10 @@ body {
 .required-indicator {
     font-weight: bold;
     color: #4E004A;
+}
+
+.productitem-container {
+    border: 1px solid #4E004A;
+    border-radius: 15px;
+    box-shadow: 5px 5px #4E004A;
 }
