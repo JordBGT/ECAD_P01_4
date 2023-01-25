@@ -55,7 +55,6 @@ if ($result->num_rows > 0) {
 			echo "<td>$formattedTotal</td>";
 			echo "</tr>";
 
-            // To Do 6 (Practical 5):
 		    // Store the shopping cart items in session variable as an associate array
 			$_SESSION["Items"][]= array("productID"=>$row["ProductID"],
             "name"=>$row["Name"],
@@ -69,13 +68,13 @@ if ($result->num_rows > 0) {
 		echo "</table>"; // End of table
 		echo "</div>"; // End of Bootstrap responsive table
 				
-		// To Do 4 (Practical 4): 
+
 		// Display the subtotal at the end of the shopping cart
 		echo "<p style='text-align:right; font-size:20px'> 
 				Subtotal = S$".number_format($subTotal,2);
 		$_SESSION["SubTotal"] = round($subTotal,2);
         
-        //Displaying Mode of Delivery option
+        //Displaying and getting input for Mode of Delivery
         echo "<br/>";
         echo"<td>";
         echo "<form method = 'post'>";
@@ -89,7 +88,7 @@ if ($result->num_rows > 0) {
         echo "</form>";
         echo"<td>";
 
-
+        // Checking Mode of Delivery
         if(isset($_POST['mod'])){
             if($_POST['mod'] == "Normal"){
                 $_SESSION["ModeOfDelivery"] = "Normal";
@@ -102,8 +101,6 @@ if ($result->num_rows > 0) {
 
                 echo "<p style='font-size:20px'> 
 				Total = S$".number_format($totalAmount,2);
-
-                // $_SESSION["TotalAmount"] = $totalAmount;
 
                 // Add PayPal Checkout button on the shopping cart page
 		        echo "<form method='post' action='checkoutProcess.php'>";
@@ -122,7 +119,6 @@ if ($result->num_rows > 0) {
 
                 echo "<p style='font-size:20px'> 
 				Total = S$".number_format($totalAmount,2);
-                // $_SESSION["TotalAmount"] = $totalAmount;
 
                 // Add PayPal Checkout button on the shopping cart page
 		        echo "<form method='post' action='checkoutProcess.php'>";
@@ -130,6 +126,7 @@ if ($result->num_rows > 0) {
 		        echo "</form></p>";
             }
 
+            // Getting Name for displaying at orderConfirmed.php
             $qry2 = "SELECT * 
             FROM Shopper WHERE ShopperID=?";
             $stmt = $conn->prepare($qry2);
@@ -142,7 +139,7 @@ if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) {
                     $SESSION["ShopperName"] = $row["Name"];
                 }
-		        
+
             }
 
         }
