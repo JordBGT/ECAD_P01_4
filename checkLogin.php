@@ -45,7 +45,8 @@ while (($row = $stmt->fetch_array())
 	header("Location: index.php");
 	exit;
 }
-echo "<h3 style='color:red'>Invalid Login Credentials</h3>";
+echo "<p class='text-center mt-6'style='color:red; margin-top: 50px;'>Invalid login credentials.<br>
+    <a href='login.php'>Return to login page</a></p>";;
 
 //Include the Page Layout footer
 include("footer.php");

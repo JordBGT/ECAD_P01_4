@@ -1,7 +1,8 @@
 body {
-    background-color: #F7E1FF;
+    background-color: #ffffff;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
 }
 
 .page-title {
@@ -19,13 +20,17 @@ body {
     background-color: #DAAFF4;
 }
 
-.nav-link {
+.nav-link,
+.forgetpassword-link,
+.register-link {
     color: #4E004A;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.forgetpassword-link:hover,
+.register-link:hover {
     color: #ffffff;
-    font-weight: bold;
+    text-decoration: none;
 }
 
 .search-button {
@@ -43,6 +48,27 @@ body {
     border: 1px solid #4E004A;
 }
 
-.login-form {
-    background-color: #DAAFF4;
+.login-button,
+.register-button {
+    background-color: #4E004A;
+    border: none;
+}
+
+.login-button:hover,
+.register-button:hover {
+    background-color: #ffffff;
+    color: #4E004A;
+    border: 1px solid #4E004A;
+}
+
+.title {
+    font-weight: bold;
+    color: #4E004A;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.required-indicator {
+    font-weight: bold;
+    color: #4E004A;
 }
