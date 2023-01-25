@@ -1,22 +1,23 @@
 <?php
+session_start();
 include("header.php"); // Include the Page Layout header
 
-// if (! isset($_SESSION["ShopperID"])) { // Check if user logged in 
-// 	// redirect to login page if the session variable shopperid is not set
-// 	header ("Location: login.php");
-// 	exit;
-// }
+if (! isset($_SESSION["ShopperID"])) { // Check if user logged in 
+	// redirect to login page if the session variable shopperid is not set
+	header ("Location: login.php");
+	exit;
+}
 
 include_once("mysql_conn.php");
 // To Do 1 (Practical 4): 
 // Retrieve from database and display shopping cart in a table
 $qry = "SELECT *, (Price*Quantity) AS Total
-        FROM ShopCartItem WHERE ShopCartID=1";
-$stmt = $conn->prepare($qry);
-// $stmt->bind_param("i", $_SESSION["Cart"]); //"i" - integer
-$stmt->execute();
-$result = $stmt->get_result();
-$stmt->close();
+            FROM ShopCartItem WHERE ShopCartID=?";
+    $stmt = $conn->prepare($qry);
+    $stmt->bind_param("i", $_SESSION["Cart"]); //"i" - integer
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
 
 if ($result->num_rows > 0) {
     // To Do 2 (Practical 4): Format and display 
@@ -128,6 +129,22 @@ if ($result->num_rows > 0) {
 		        echo "<input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>";
 		        echo "</form></p>";
             }
+
+            $qry2 = "SELECT * 
+            FROM Shopper WHERE ShopperID=?";
+            $stmt = $conn->prepare($qry2);
+            $stmt->bind_param("i", $_SESSION["ShopperID"]); //"i" - integer
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
+
+	        if ($result->num_rows > 0) {
+                while ($row = $result->fetch_array()) {
+                    $SESSION["ShopperName"] = $row["Name"];
+                }
+		        
+            }
+
         }
 
 
