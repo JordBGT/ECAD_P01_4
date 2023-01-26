@@ -9,7 +9,7 @@ if (! isset($_SESSION["ShopperID"])) { // Check if user logged in
 }
 
 include_once("mysql_conn.php");
-// To Do 1 (Practical 4): 
+
 // Retrieve from database and display shopping cart in a table
 $qry = "SELECT *, (Price*Quantity) AS Total
             FROM ShopCartItem WHERE ShopCartID=?";
@@ -35,7 +35,6 @@ if ($result->num_rows > 0) {
     echo "</tr>"; // End of header row
     echo "</thead>"; // End of table's header section
     
-    // To Do 5 (Practical 5):
     // Declare an array to store the shopping cart items in session variable 
     $_SESSION["Items"]=array();
 
@@ -101,6 +100,7 @@ if ($result->num_rows > 0) {
 
         // Checking Mode of Delivery
         if(isset($_POST['mod'])){
+            //If Mode Of Delivery is Normal
             if($_POST['mod'] == "Normal"){
                 $_SESSION["ModeOfDelivery"] = "Normal";
                 $_SESSION["TaxFromCurrentYear"] = $tax;
@@ -118,13 +118,14 @@ if ($result->num_rows > 0) {
                 echo "Tax Amount: S$ $taxAmount";
                 echo "<br/>";
                 
+                // Adding Delivery Fee and Tax Amount to Total Amount
                 $totalAmount = $_SESSION["SubTotal"] + 5 + $taxAmount;
 
                 echo "<p style='font-size:20px'> 
 				Total = S$ $totalAmount";
                 
 
-                // Add Form Data and PayPal Checkout button on the OrderDeliveryCheckout page
+                // Add Form and PayPal Checkout button on the OrderDeliveryCheckout page
 		        echo "<form method='post' action='checkoutProcess.php'>";
                 // Ask for Bill Name
                 echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Deliver To&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&emsp;&emsp;&emsp;</label>
@@ -184,6 +185,7 @@ if ($result->num_rows > 0) {
 		        echo "<input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>";
 		        echo "</form></p>";
             }
+            // If Mode of Delivery is not normal, Mode of Delivery = Express
             else
             {
                 $_SESSION["ModeOfDelivery"] = "Express";
@@ -202,12 +204,13 @@ if ($result->num_rows > 0) {
                 echo "Tax Amount: S$ $taxAmount";
                 echo "<br/>";
                 
+                // Adding Delivery Fee and Tax Amount to Total Amount
                 $totalAmount = $_SESSION["SubTotal"] + 10 + $taxAmount;
 
                 echo "<p style='font-size:20px'> 
 				Total = S$ $totalAmount";
 
-                // Add Form Data and PayPal Checkout button on the OrderDeliveryCheckout page
+                // Add Form and PayPal Checkout button on the OrderDeliveryCheckout page
 		        echo "<form method='post' action='checkoutProcess.php'>";
                 // Ask for Bill Name
                 echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Deliver To&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&emsp;&emsp;&emsp;</label>
