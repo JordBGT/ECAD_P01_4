@@ -1,7 +1,4 @@
-<!-- 3rd row-->
-            <div class="row">
-                <div class="col-sm-12"></div>
-            </div>
+<div>
             <!-- Search Bar -->
                 <div style="width:80%; margin:auto; margin-top: 2.5%;"> <!-- Container -->
                     <form name="frmSearch" method="get" action="">
@@ -33,13 +30,11 @@
                             <div class="col-sm-2">
                                 <button class="search-button" type="submit">Search</button>
                             </div>
-
-
                         </div>
                     </form>
                 </div>
-            <!-- </div> -->
             <!-- Product Catalog On Offer -->
+</div>
 <?php
 // The non-empty search keyword is sent to server
 if (isset($_GET["keywords"]) && trim($_GET['keywords']) != "") {

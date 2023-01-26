@@ -20,7 +20,7 @@ include("header.php");
                     <form action="checkLogin.php" method="post" >
                         <input type="email" name="email" id="email" class="form-control my-4 py-2" placeholder="Email" required/>
                         <input type="password" name="password" id="password" class="form-control my-4 py-2" placeholder="Password" required/>
-                        <a href="forgetpassword.php" class="forgetpassword-link">Forget password?</a>
+                        <a href="forgetpassword.php" class="forgetpassword-link pl-1">Forget password?</a>
                         <div class="text-center mt-3">
                         <button class="btn btn-primary login-button">Login</button>
                         </div>

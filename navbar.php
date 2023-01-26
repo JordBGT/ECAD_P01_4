@@ -13,7 +13,7 @@ if(isset($_SESSION["ShopperName"])) {
     //after shopper has logged in.
     $content1 = "Welcome <b>$_SESSION[ShopperName]!</b>";
     $content2 = "<li class='nav-item'>
-                 <a class='nav-link' href='editprofile.php'>Edit Profile</a></li>
+                 <a class='nav-link' href='viewprofile.php'>View Profile</a></li>
                  <li class='nav-item'>
                  <a class='nav-link' href='logout.php'>Logout</a></li>";
 	
@@ -51,10 +51,7 @@ if(isset($_SESSION["ShopperName"])) {
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="category.php">Product Categories</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="search.php">Product Search</a>
-            </li>                
+            </li>         
             <li class="nav-item">
                 <a class="nav-link" href="shoppingCart.php">Shopping Cart</a>
             </li>
