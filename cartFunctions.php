@@ -75,7 +75,7 @@ function addItem() {
             $stmt->bind_param("iiii", $_SESSION["Cart"], $pid, $quantity, $pid);
             $stmt->execute();
             $stmt->close();
-            $addNewItem = 1;
+            $addNewItem = $quantity;
         }
         else { //product is not on offer; use normal price
             $qry = "INSERT INTO ShopCartItem(ShopCartID, ProductID, Price, Name, Quantity)
@@ -85,7 +85,7 @@ function addItem() {
             $stmt->bind_param("iiii", $_SESSION["Cart"], $pid, $quantity, $pid);
             $stmt->execute();
             $stmt->close();
-            $addNewItem = 1;
+            $addNewItem = $quantity;
         }
     }
   	$conn->close();
@@ -94,7 +94,7 @@ function addItem() {
         $_SESSION["NumCartItem"] = $_SESSION["NumCartItem"] +$addNewItem;
     }
     else {
-        $_SESSION["NumCartItem"] = 1;
+        $_SESSION["NumCartItem"] = $addNewItem;
     }
 	//Redirect shopper to shopping cart page
 	header ("Location: shoppingCart.php");
@@ -114,12 +114,25 @@ function updateItem() {
     $pid = $_POST["product_id"];
     $quantity = $_POST["quantity"];
     include_once("mysql_conn.php"); //establish database connection handle: $conn
+
+    //retrieve quantity of item before deleting
+    $qry = "SELECT Quantity FROM ShopCartItem WHERE ProductID=? AND ShopCartID=?";
+    $stmt = $conn->prepare($qry);
+    $stmt->bind_param("ii", $pid, $cartid); //"ii" - 2 integers
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $originalQuantity = $row['Quantity'];
+
+    //update item quantity
     $qry = "UPDATE ShopCartItem SET Quantity=? WHERE ProductID=? AND ShopCartID=?";
     $stmt = $conn->prepare($qry);
     $stmt->bind_param("iii", $quantity, $pid, $cartid); //"i" - integer
     $stmt->execute();
     $stmt->close();
     $conn->close();
+
+    $_SESSION["NumCartItem"] = $_SESSION["NumCartItem"] + ($quantity - $originalQuantity);
     header ("Location: shoppingCart.php");
     exit;
 }
@@ -136,13 +149,25 @@ function removeItem() {
     $pid = $_POST["product_id"];
     $quantity = $_POST["quantity"];
     include_once("mysql_conn.php"); //establish database connection handle: $conn
+
+    //retrieve quantity of item before deleting
+    $qry = "SELECT Quantity FROM ShopCartItem WHERE ProductID=? AND ShopCartID=?";
+    $stmt = $conn->prepare($qry);
+    $stmt->bind_param("ii", $pid, $cartid); //"ii" - 2 integers
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $quantity = $row['Quantity'];
+
+    //delete item
     $qry = "DELETE FROM ShopCartItem WHERE ProductID=? AND ShopCartID=?";
     $stmt = $conn->prepare($qry);
     $stmt->bind_param("ii", $pid, $cartid); //"ii" - 2 integers
     $stmt->execute();
     $stmt->close();
     $conn->close();
-    $_SESSION["NumCartItem"] = $_SESSION["NumCartItem"] - 1;
+
+    $_SESSION["NumCartItem"] = $_SESSION["NumCartItem"] - $quantity;
     header ("Location: shoppingCart.php");
     exit;
 }		

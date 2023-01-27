@@ -30,11 +30,11 @@ if(isset($_SESSION["ShopperName"])) {
     <a href="#" class="navbar-brand mb-0">
     <img src="Images/logo.png" alt="Logo" class="d-inline-block align-top">
     </a>
-    <!-- Display welcome text
+    <!-- Display welcome text -->
     <span class="navbar-text ml-md-2"
-        style="color:#F7BE81; max-width: 80%;">
+        style="color:#FFFFFF; max-width: 80%;">
         <?php echo $content1; ?>
-    </span> -->
+    </span>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
