@@ -59,14 +59,34 @@ function addItem() {
         $stmt->close();
     }
     else { //selected product has yet to be added to shopping cart
-        $qry = "INSERT INTO ShopCartItem(ShopCartID, ProductID, Price, Name, Quantity)
-                SELECT ?, ?, Price, ProductTitle, ? FROM Product WHERE ProductID=?";
-        $stmt = $conn->prepare($qry);
-        //"iiii" - 4 integers
-        $stmt->bind_param("iiii", $_SESSION["Cart"], $pid, $quantity, $pid);
+        //check if product is on offer and is within the promotion period
+        $qryCheckOffer = "SELECT OfferedPrice FROM Product
+                          WHERE ProductID=? AND OfferedPrice IS NOT NULL AND CURDATE() BETWEEN OfferStartDate AND OfferEndDate";
+        $stmt = $conn->prepare($qryCheckOffer);
+        $stmt->bind_param("i", $pid); //"i" - integer
         $stmt->execute();
+        $result = $stmt->get_result();
         $stmt->close();
-        $addNewItem = 1;
+        if ($result->num_rows > 0) { //product is on offer; use offer price instead
+            $qry = "INSERT INTO ShopCartItem(ShopCartID, ProductID, Price, Name, Quantity)
+            SELECT ?, ?, OfferedPrice, ProductTitle, ? FROM Product WHERE ProductID=?";
+            $stmt = $conn->prepare($qry);
+            //"iiii" - 4 integers
+            $stmt->bind_param("iiii", $_SESSION["Cart"], $pid, $quantity, $pid);
+            $stmt->execute();
+            $stmt->close();
+            $addNewItem = 1;
+        }
+        else { //product is not on offer; use normal price
+            $qry = "INSERT INTO ShopCartItem(ShopCartID, ProductID, Price, Name, Quantity)
+            SELECT ?, ?, Price, ProductTitle, ? FROM Product WHERE ProductID=?";
+            $stmt = $conn->prepare($qry);
+            //"iiii" - 4 integers
+            $stmt->bind_param("iiii", $_SESSION["Cart"], $pid, $quantity, $pid);
+            $stmt->execute();
+            $stmt->close();
+            $addNewItem = 1;
+        }
     }
   	$conn->close();
   	//Update session variable used for counting number of items in the shopping cart.
