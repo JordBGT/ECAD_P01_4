@@ -252,8 +252,15 @@ if(isset($_GET["token"]) && isset($_GET["PayerID"]))
 			unset($_SESSION["Cart"]);
 			
 			// To Do 4C: Redirect shopper to the order confirmed page.
-			header("Location: orderConfirmed.php");
-			exit;
+			?>
+			<script>
+
+			//Redirect to the home page
+			window.location = "index.php";
+			</script>
+			<?php
+
+			// exit;
 		} 
 		else 
 		{
