@@ -77,8 +77,8 @@ if ($result->num_rows > 0) {
         echo "<form method = 'post'>";
         echo"Mode of Delivery: ";
         echo "<select name= 'mod'>";
-        echo "<option value='Normal'>Normal Delivery</option>";
-        echo "<option value ='Express'>Express Delivery</option>";
+        echo "<option value='Normal'>Normal Delivery ($5.00) </option>";
+        echo "<option value ='Express'>Express Delivery ($10.00) </option>";
         echo "</select>";
 
         echo "<input type='submit' name='submit'>";
@@ -114,17 +114,17 @@ if ($result->num_rows > 0) {
                 echo "<div class='card border-0 shadow'>
                             <div class='card-body' style='background-color: #DAAFF4; border-radius: 5px;'>
                                 <div class='m-auto'>
-                                    <h2 class='loginheader text-center' style='color: #4E004A;'>Cart Details</h2>
+                                    <h2 class='loginheader text-center' style='color: #4E004A;'>Payment Details</h2>
                                 </div>";
                 echo "<p>You have chosen the Normal Delivery for your Order!<p>";
                 echo "Sub Total: S$".number_format($_SESSION["SubTotal"],2);
                 echo"<br/>";
                 echo "Delivery Fee: S$5";
                 echo "<br/>";
-                echo "Tax (%) : $tax %";
+                echo "GST (Tax %) : $tax %";
                 echo "<br/>";
 
-                echo "Tax Amount: S$ $taxAmount";
+                echo "GST: S$ $taxAmount";
                 echo "<br/>";
                 // Adding Delivery Fee and Tax Amount to Total Amount
                 $totalAmount = $_SESSION["SubTotal"] + 5 + $taxAmount;
@@ -186,17 +186,17 @@ if ($result->num_rows > 0) {
                 echo "<div class='card border-0 shadow'>
                             <div class='card-body' style='background-color: #DAAFF4; border-radius: 5px;'>
                                 <div class='m-auto'>
-                                    <h2 class='loginheader text-center' style='color: #4E004A;'>Cart Details</h2>
+                                    <h2 class='loginheader text-center' style='color: #4E004A;'>Payment Details</h2>
                                 </div>";
                 echo "<p>You have chosen the Express Delivery for your Order!<p>";
                 echo "Sub Total: S$".number_format($_SESSION["SubTotal"],2);
                 echo"<br/>";
                 echo "Delivery Fee: S$10";
                 echo "<br/>";
-                echo "Tax (%) : $tax %";
+                echo "GST (Tax %) : $tax %";
                 echo "<br/>";
 
-                echo "Tax Amount: S$ $taxAmount";
+                echo "GST: S$ $taxAmount";
                 echo "<br/>";
                 // Adding Delivery Fee and Tax Amount to Total Amount
                 $totalAmount = $_SESSION["SubTotal"] + 10 + $taxAmount;
