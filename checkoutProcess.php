@@ -1,6 +1,6 @@
 <?php
 session_start();
-// include("header.php"); // Include the Page Layout header
+include("header.php"); // Include the Page Layout header
 include_once("myPayPal.php"); // Include the file that contains PayPal settings
 include_once("mysql_conn.php"); 
 
@@ -26,9 +26,9 @@ if($_POST) //Post Data received from Shopping cart page.
 
 		//Check if the quantity of product that user is buying is more than the inventory list
 		if ($row["Quantity"] < $item["quantity"]) {
-			echo "We are really sorry! $item[name] is out of stock!<br />";
-			echo "Please return to shopping cart to amend your purchase.<br />";
-			echo "Thank you for your understanding!<br />";
+			echo "<p style='font-weight: bold; color:red;'>We are really sorry! $item[name] is out of stock! </p> <br />";
+			echo "<p style='font-weight: bold; color:red;'> Please return to shopping cart to amend your purchase. </p> <br />";
+			echo "<p style='font-weight: bold;'>Thank you for your understanding! </p> <br />";
 			echo "<a href='index.php'>Continue shopping</a></p>";
 			include("footer.php");
 			exit;
