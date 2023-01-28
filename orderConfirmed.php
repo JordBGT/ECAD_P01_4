@@ -24,11 +24,6 @@ if(isset($_SESSION["OrderID"])) {
     }
 
     //unset session variables
-    unset($_SESSION["OrderID"]);
-    unset($_SESSION["Items"]);
-    unset($_SESSION["ShipCharge"]);
-    unset($_SESSION["ShopperName"]);
-    unset($_SESSION["Waived"]);
 
 
     echo "<a href='index.php'>Continue shopping</a></p>";

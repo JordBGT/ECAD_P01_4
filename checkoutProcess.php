@@ -43,7 +43,7 @@ if($_POST) //Post Data received from Shopping cart page.
 		$paypal_data .= '&L_PAYMENTREQUEST_0_QTY'.$key.'='.urlencode($item["quantity"]);
 	  	$paypal_data .= '&L_PAYMENTREQUEST_0_AMT'.$key.'='.urlencode($item["price"]);
 	  	$paypal_data .= '&L_PAYMENTREQUEST_0_NAME'.$key.'='.urlencode($item["name"]);
-		$paypal_data .= '&L_PAYMENTREQUEST_0_NUMBER'.$key.'='.urlencode($item["productId"]);
+		$paypal_data .= '&L_PAYMENTREQUEST_0_NUMBER'.$key.'='.urlencode($item["productID"]);
 	}
 
 	//Get Form Data
@@ -109,7 +109,14 @@ if($_POST) //Post Data received from Shopping cart page.
 		$paypalurl ='https://www'.$paypalmode. 
 		            '.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token='.
 					$httpParsedResponseAr["TOKEN"].'';
-		header('Location: '.$paypalurl);
+		
+?>
+<script>
+
+//Redirect to the home page
+window.location = "<?php echo $paypalurl; ?>";
+</script>
+<?php 
 	}
 	else {
 		//Show error message
@@ -258,7 +265,7 @@ if(isset($_GET["token"]) && isset($_GET["PayerID"]))
 			<script>
 
 			//Redirect to the home page
-			window.location = "index.php";
+			window.location = "orderconfirmed.php";
 			</script>
 			<?php
 
