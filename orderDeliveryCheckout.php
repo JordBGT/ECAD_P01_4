@@ -107,83 +107,128 @@ if ($result->num_rows > 0) {
 
                 $taxAmount = round($_SESSION["SubTotal"] * ($_SESSION["TaxFromCurrentYear"]/100),2);
 
-                echo "You have chosen the Normal Delivery for your Order!";
-                echo"<br/>";
+                
+                echo "<div class='container p-5'>";
+                echo "<div class='row'>";
+                echo "<div class='col-12'>";
+                echo "<div class='card border-0 shadow'>
+                            <div class='card-body' style='background-color: #DAAFF4; border-radius: 5px;'>
+                                <div class='m-auto'>
+                                    <h2 class='loginheader text-center' style='color: #4E004A;'>Cart Details</h2>
+                                </div>";
+                echo "<p>You have chosen the Normal Delivery for your Order!<p>";
                 echo "Sub Total: S$".number_format($_SESSION["SubTotal"],2);
                 echo"<br/>";
                 echo "Delivery Fee: S$5";
                 echo "<br/>";
                 echo "Tax (%) : $tax %";
                 echo "<br/>";
+
                 echo "Tax Amount: S$ $taxAmount";
                 echo "<br/>";
-                
                 // Adding Delivery Fee and Tax Amount to Total Amount
                 $totalAmount = $_SESSION["SubTotal"] + 5 + $taxAmount;
 
                 echo "<p style='font-size:20px'> 
 				Total = S$ $totalAmount";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+                
+
+                
                 
 
                 // Add Form and PayPal Checkout button on the OrderDeliveryCheckout page
-		        echo "<form method='post' action='checkoutProcess.php'>";
-                // Ask for Bill Name
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Deliver To&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' name='BillName' id='BillName' placeholder='John Ecader' required>";
-                echo "<br/>";
-                echo "<br/>";
+		        // echo "<form method='post' action='checkoutProcess.php'>";
+                // // Ask for Bill Name
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Deliver To&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' name='BillName' id='BillName' placeholder='John Ecader' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                //Ask for Recipient Mobile Number
-                echo"<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Recipient Mobile No&nbsp;<abbr style='color: red;'>*</abbr></label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='ShipPhone' name='ShipPhone' placeholder='(65) 1234 5678' required>";
-                echo "<br/>";
-                echo "<br/>";
+                // //Ask for Recipient Mobile Number
+                // echo"<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Recipient Mobile No&nbsp;<abbr style='color: red;'>*</abbr></label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='ShipPhone' name='ShipPhone' placeholder='(65) 1234 5678' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                //Ask for Recipient Email
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Recipient Email&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&ensp;</label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='ShipEmail' name='ShipEmail' placeholder='' required>";
-                echo "<br/>";
-                echo "<br/>";
+                // //Ask for Recipient Email
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Recipient Email&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&ensp;</label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='ShipEmail' name='ShipEmail' placeholder='' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                 //Ask for Delivery Date
-                 echo"<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Delivery Date&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
-                 <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='DeliveryDate' name='DeliveryDate' placeholder='YYYY-MM-DD' required>";
-                 echo "<br/>";
-                 echo "<br/>";
+                //  //Ask for Delivery Date
+                //  echo"<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Delivery Date&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
+                //  <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='DeliveryDate' name='DeliveryDate' placeholder='YYYY-MM-DD' required>";
+                //  echo "<br/>";
+                //  echo "<br/>";
 
-                 //Ask for Delivery Time
-                  echo"<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Delivery Time&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
-                  <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='DeliveryTime' name='DeliveryTime' placeholder='12pm-3pm' required>";
-                  echo "<br/>";
-                  echo "<br/>";
+                //  //Ask for Delivery Time
+                //   echo"<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Delivery Time&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
+                //   <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='DeliveryTime' name='DeliveryTime' placeholder='12pm-3pm' required>";
+                //   echo "<br/>";
+                //   echo "<br/>";
 
-                //Ask for Message 
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Message&emsp;&emsp;&emsp;&emsp;</label>
-                <textarea style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='Message' name='Message' placeholder='Merry Christmas!'></textarea>";
-                echo "<br/>";
-                echo "<br/>";
+                // //Ask for Message 
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Message&emsp;&emsp;&emsp;&emsp;</label>
+                // <textarea style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='Message' name='Message' placeholder='Merry Christmas!'></textarea>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                //Ask for Billing Address
-                echo"<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Billing Address&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillAddress' name='BillAddress' placeholder='' required>";
-                echo "<br/>";
-                echo "<br/>";
+                // //Ask for Billing Address
+                // echo"<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Billing Address&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillAddress' name='BillAddress' placeholder='' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                //Ask for Billing Number
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Billing Mobile No&nbsp;<abbr style='color: red;'>*</abbr></label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillPhone' name='BillPhone' placeholder='(65) 1234 5678' required>";
-                echo "<br/>";
-                echo "<br/>";
+                // //Ask for Billing Number
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Billing Mobile No&nbsp;<abbr style='color: red;'>*</abbr></label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillPhone' name='BillPhone' placeholder='(65) 1234 5678' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                //Ask for Billing Email
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Billing Email&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&ensp;</label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillEmail' name='BillEmail' placeholder='' required>";
-                echo "<br/>";
-                echo "<br/>";
+                // //Ask for Billing Email
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Billing Email&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&ensp;</label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillEmail' name='BillEmail' placeholder='' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
 
-		        echo "<input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>";
-		        echo "</form></p>";
+		        // echo "<input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>";
+		        // echo "</form></p>";
+                echo"
+                <div class='container p-5'>
+                <div class='row'>
+                <div class='col-12'>
+                        <div class='card border-0 shadow'>
+                            <div class='card-body' style='background-color: #DAAFF4; border-radius: 5px;'>
+                                <div class='m-auto'>
+                                    <h2 class='loginheader text-center' style='color: #4E004A;'>Delivery Details</h2>
+                                </div>
+                                <form action='checkoutProcess.php' method='post' >
+                                    <input type='text' name='BillName' id='BillName' class='form-control my-4 py-2' placeholder='Name' required/>
+                                    <input type='text' name='ShipPhone' id='ShipPhone' class='form-control my-4 py-2' placeholder='(65) 1234 5678' required/>
+				                    <input type='text' name='ShipEmail' id='ShipEmail' class='form-control my-4 py-2' placeholder='ecader@gmail.com' required/>
+				                    <input type='date' name='DeliveryDate' id='DeliveryDate' class='form-control my-4 py-2' placeholder='' required/>
+				                    <input type='text' name='DeliveryTime' id='DeliveryTime' class='form-control my-4 py-2' placeholder='1pm-3pm' required/>
+				                    <input type='text' name='Message' id='Message' class='form-control my-4 py-2' placeholder='Happy New Year!' required/>
+				                    <input type='text' name='BillAddress' id='BillAddress' class='form-control my-4 py-2' placeholder='Yung An Road,Block 334' required/>
+				                    <input type='text' name='BillPhone' id='BillPhone' class='form-control my-4 py-2' placeholder='(65) 1234 5678' required/>
+				                    <input type='text' name='BillEmail' id='BillEmail' class='form-control my-4 py-2' placeholder='ecader@gmail.com' required/>
+
+                                <div class='text-center mt-3'>
+                                <input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>
+                                </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                 </div>";
+  
             }
             // If Mode of Delivery is not normal, Mode of Delivery = Express
             else
@@ -193,81 +238,129 @@ if ($result->num_rows > 0) {
 
                 $taxAmount = round($_SESSION["SubTotal"] * ($_SESSION["TaxFromCurrentYear"]/100),2);
 
-                echo "You have chosen the Express Delivery for your Order!"; 
-                echo"<br/>";
+                echo "<div class='container p-5'>";
+                echo "<div class='row'>";
+                echo "<div class='col-12'>";
+                echo "<div class='card border-0 shadow'>
+                            <div class='card-body' style='background-color: #DAAFF4; border-radius: 5px;'>
+                                <div class='m-auto'>
+                                    <h2 class='loginheader text-center' style='color: #4E004A;'>Cart Details</h2>
+                                </div>";
+                echo "<p>You have chosen the Express Delivery for your Order!<p>";
                 echo "Sub Total: S$".number_format($_SESSION["SubTotal"],2);
                 echo"<br/>";
                 echo "Delivery Fee: S$10";
                 echo "<br/>";
-                echo "Tax: $tax %";
+                echo "Tax (%) : $tax %";
                 echo "<br/>";
+
                 echo "Tax Amount: S$ $taxAmount";
                 echo "<br/>";
-                
                 // Adding Delivery Fee and Tax Amount to Total Amount
                 $totalAmount = $_SESSION["SubTotal"] + 10 + $taxAmount;
 
                 echo "<p style='font-size:20px'> 
 				Total = S$ $totalAmount";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
 
                 // Add Form and PayPal Checkout button on the OrderDeliveryCheckout page
-		        echo "<form method='post' action='checkoutProcess.php'>";
-                // Ask for Bill Name
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Deliver To&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' name='BillName' id='BillName' placeholder='John Ecader' required>";
-                echo "<br/>";
-                echo "<br/>";
+		        // echo "<form method='post' action='checkoutProcess.php'>";
 
-                //Ask for Recipient Mobile Number
-                echo"<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Recipient Mobile No&nbsp;<abbr style='color: red;'>*</abbr></label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='ShipPhone' name='ShipPhone' placeholder='(65) 1234 5678' required>";
-                echo "<br/>";
-                echo "<br/>";
+                // // Header
+                // echo" <h2 style='font-size: 36px; margin-bottom: 2.5rem; font-weight: 500; opacity: 0.8;'>Delivery Details</h2>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                //Ask for Recipient Email
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Recipient Email&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&ensp;</label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='ShipEmail' name='ShipEmail' placeholder='' required>";
-                echo "<br/>";
-                echo "<br/>";
+                // // Ask for Bill Name
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Deliver To&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' name='BillName' id='BillName' placeholder='John Ecader' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                 //Ask for Delivery Date
-                 echo"<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Delivery Date&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
-                 <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='DeliveryDate' name='DeliveryDate' placeholder='YYYY-MM-DD' required>";
-                 echo "<br/>";
-                 echo "<br/>";
+                // //Ask for Recipient Mobile Number
+                // echo"<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Recipient Mobile No&nbsp;<abbr style='color: red;'>*</abbr></label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='ShipPhone' name='ShipPhone' placeholder='(65) 1234 5678' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                 //Ask for Delivery Time
-                  echo"<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Delivery Time&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
-                  <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='DeliveryTime' name='DeliveryTime' placeholder='12pm-3pm' required>";
-                  echo "<br/>";
-                  echo "<br/>";
+                // //Ask for Recipient Email
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Recipient Email&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&ensp;</label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='ShipEmail' name='ShipEmail' placeholder='' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                //Ask for Message 
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Message&emsp;&emsp;&emsp;&emsp;</label>
-                <textarea style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='Message' name='Message' placeholder='Merry Christmas!'></textarea>";
-                echo "<br/>";
-                echo "<br/>";
+                //  //Ask for Delivery Date
+                //  echo"<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Delivery Date&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
+                //  <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='DeliveryDate' name='DeliveryDate' placeholder='YYYY-MM-DD' required>";
+                //  echo "<br/>";
+                //  echo "<br/>";
 
-                //Ask for Billing Address
-                echo"<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Billing Address&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillAddress' name='BillAddress' placeholder='' required>";
-                echo "<br/>";
-                echo "<br/>";
+                //  //Ask for Delivery Time
+                //   echo"<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Delivery Time&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
+                //   <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='DeliveryTime' name='DeliveryTime' placeholder='12pm-3pm' required>";
+                //   echo "<br/>";
+                //   echo "<br/>";
 
-                //Ask for Billing Number
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Billing Mobile No&nbsp;<abbr style='color: red;'>*</abbr></label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillPhone' name='BillPhone' placeholder='(65) 1234 5678' required>";
-                echo "<br/>";
-                echo "<br/>";
+                // //Ask for Message 
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Message&emsp;&emsp;&emsp;&emsp;</label>
+                // <textarea style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='Message' name='Message' placeholder='Merry Christmas!'></textarea>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-                //Ask for Billing Email
-                echo "<label for='name' style='font-size: 16px; color: grey; margin-bottom: 0.5rem;'>Billing Email&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&ensp;</label>
-                <input type='text' style='width: 100%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillEmail' name='BillEmail' placeholder='' required>";
-                echo "<br/>";
-                echo "<br/>";
+                // //Ask for Billing Address
+                // echo"<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Billing Address&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&nbsp;</label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillAddress' name='BillAddress' placeholder='' required>";
+                // echo "<br/>";
+                // echo "<br/>";
 
-		        echo "<input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>";
-		        echo "</form></p>";
+                // //Ask for Billing Number
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Billing Mobile No&nbsp;<abbr style='color: red;'>*</abbr></label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillPhone' name='BillPhone' placeholder='(65) 1234 5678' required>";
+                // echo "<br/>";
+                // echo "<br/>";
+
+                // //Ask for Billing Email
+                // echo "<label for='name' style='font-size: 16px; color: white; margin-bottom: 0.5rem;'>Billing Email&nbsp;<abbr style='color: red;'>*</abbr>&emsp;&emsp;&ensp;</label>
+                // <input type='text' style='width: 50%; height: 40px; padding: 0 10px; background-color: #f2f2f2; border-radius: 5px; border: none; font-size: 18px;' id='BillEmail' name='BillEmail' placeholder='' required>";
+                // echo "<br/>";
+                // echo "<br/>";
+
+		        // echo "<input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>";
+		        // echo "</form></p>";
+
+                echo"
+                <div class='container p-5'>
+                <div class='row'>
+                <div class='col-12 col-sm-6 col-md-7 m-auto'>
+                        <div class='card border-0 shadow'>
+                            <div class='card-body' style='background-color: #DAAFF4; border-radius: 5px;'>
+                                <div class='m-auto'>
+                                    <h2 class='loginheader text-center' style='color: #4E004A;'>Delivery Details</h2>
+                                </div>
+                                <form action='checkoutProcess.php' method='post' >
+                                    <input type='text' name='BillName' id='BillName' class='form-control my-4 py-2' placeholder='Name' required/>
+                                    <input type='text' name='ShipPhone' id='ShipPhone' class='form-control my-4 py-2' placeholder='(65) 1234 5678' required/>
+				                    <input type='text' name='ShipEmail' id='ShipEmail' class='form-control my-4 py-2' placeholder='ecader@gmail.com' required/>
+				                    <input type='date' name='DeliveryDate' id='DeliveryDate' class='form-control my-4 py-2' placeholder='' required/>
+				                    <input type='text' name='DeliveryTime' id='DeliveryTime' class='form-control my-4 py-2' placeholder='1pm-3pm' required/>
+				                    <input type='text' name='Message' id='Message' class='form-control my-4 py-2' placeholder='Happy New Year!' required/>
+				                    <input type='text' name='BillAddress' id='BillAddress' class='form-control my-4 py-2' placeholder='Yung An Road,Block 334' required/>
+				                    <input type='text' name='BillPhone' id='BillPhone' class='form-control my-4 py-2' placeholder='(65) 1234 5678' required/>
+				                    <input type='text' name='BillEmail' id='BillEmail' class='form-control my-4 py-2' placeholder='ecader@gmail.com' required/>
+
+                                <div class='text-center mt-3'>
+                                <input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>
+                                </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                 </div>";
+                
             }
 
             // Getting Name for displaying at orderConfirmed.php
