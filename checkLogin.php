@@ -24,7 +24,7 @@ while (($row = $stmt->fetch_array())
 	$_SESSION["ShopperID"] = $row["ShopperID"];
 
 	//Get active shopping cart
-	$qry = "SELECT sc.ShopCartID, COUNT(sci.ProductID) AS NumItems
+	$qry = "SELECT sc.ShopCartID, SUM(sci.Quantity) AS NumItems
 			FROM shopcart sc LEFT JOIN shopcartitem sci
 			ON sc.ShopCartID=sci.ShopCartID
 			WHERE sc.OrderPlaced=0 AND sc.ShopperID=?";
@@ -40,10 +40,14 @@ while (($row = $stmt->fetch_array())
 	}
 	//close database connection
 	$conn->close();
+?>
+<script>
 
-	//Redirect to home page
-	header("Location: index.php");
-	exit;
+//Redirect to the home page
+window.location = "index.php";
+</script>
+<?php
+	// exit;
 }
 echo "<p class='text-center mt-6'style='color:red; margin-top: 50px;'>Invalid login credentials.<br>
     <a href='login.php'>Return to login page</a></p>";;

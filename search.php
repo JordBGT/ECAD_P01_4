@@ -1,8 +1,11 @@
-
 <!-- display products on offer-->
 
 
 <?php
+session_start();
+include("header.php"); // Include the Page Layout header
+
+
 // The non-empty search keyword is sent to server
 if (isset($_GET["keywords"]) && trim($_GET['keywords']) != "") {
     $keywords = $_GET["keywords"];
@@ -91,4 +94,6 @@ if (isset($_GET["keywords"]) && trim($_GET['keywords']) != "") {
     echo "</div>";
 	// To Do (DIY): End of Code
 }
+
+include("footer.php"); // Include the Page Layout footer
 ?>

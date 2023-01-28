@@ -50,13 +50,42 @@ function addItem() {
     $addNewItem = 0;
     if ($result->num_rows > 0) { //selected product exists in shopping cart
         //increase the quantity of purchase
-        $qry = "UPDATE ShopCartItem SET Quantity=LEAST(Quantity+?, 10)
-                WHERE ShopCartID=? AND ProductID=?";
+
+        //get current quantity
+        $qry2 = "SELECT Quantity FROM ShopCartItem WHERE ShopCartID=? AND ProductID=?";
+        $stmt2 = $conn->prepare($qry2);
+        $stmt2->bind_param("ii", $_SESSION["Cart"], $pid); //"i" - integer
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        $stmt2->close();
+        $row2 = $result2->fetch_array();
+        $currentQuantity = $row2["Quantity"];
+
+        $qry = "UPDATE ShopCartItem SET Quantity=LEAST(Quantity+?, 10) WHERE ShopCartID=? AND ProductID=?";
         $stmt = $conn->prepare($qry);
-        //"iii" - 3 integers
-        $stmt->bind_param("iii", $quantity, $_SESSION["Cart"], $pid);
+        $stmt->bind_param("iii", $quantity, $_SESSION["Cart"], $pid); //"i" - integer
         $stmt->execute();
         $stmt->close();
+
+        //get new quantity
+        $qry3 = "SELECT Quantity FROM ShopCartItem WHERE ShopCartID=? AND ProductID=?";
+        $stmt3 = $conn->prepare($qry3);
+        $stmt3->bind_param("ii", $_SESSION["Cart"], $pid); //"i" - integer
+        $stmt3->execute();
+        $result3 = $stmt3->get_result();
+        $stmt3->close();
+        $row3 = $result3->fetch_array();
+        $newQuantity = $row3["Quantity"];
+
+
+        if ($currentQuantity + $quantity > 10) {
+            $itemsto = 10 - ($currentQuantity);
+            $_SESSION["NumCartItem"] += $itemsto;
+        }
+        else{
+            $_SESSION["NumCartItem"] += $quantity;
+        }
+
     }
     else { //selected product has yet to be added to shopping cart
         //check if product is on offer and is within the promotion period
@@ -91,7 +120,7 @@ function addItem() {
   	$conn->close();
   	//Update session variable used for counting number of items in the shopping cart.
 	if (isset($_SESSION["NumCartItem"])) {
-        $_SESSION["NumCartItem"] = $_SESSION["NumCartItem"] +$addNewItem;
+        $_SESSION["NumCartItem"] += $addNewItem;
     }
     else {
         $_SESSION["NumCartItem"] = $addNewItem;

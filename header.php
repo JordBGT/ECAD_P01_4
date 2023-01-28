@@ -19,7 +19,7 @@
             <!-- 1st row-->
             <div class="row">
                 <div class="col-sm-12">
-                    <?php include("navbar.php");?>
+                    <?php include("newnavbar.php");?>
                 </div>
             </div>
             <!-- Continued in body.php -->
