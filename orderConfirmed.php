@@ -7,7 +7,6 @@ if(isset($_SESSION["OrderID"])) {
 	echo "<p>Checkout successful. Your order number is $_SESSION[OrderID]</p>";
 	echo "<p>Thank you for your purchase.&nbsp;&nbsp;";
 	echo"<p>Delivering To: $_SESSION[ShopperName]</p>";
-    echo"<p>Delivering Address: $_SESSION[ShopperName]</p>";
     echo"<p>Order Summary:</p>";
     foreach($_SESSION['Items'] as $key=>$item) {
         $a = $item["quantity"];
