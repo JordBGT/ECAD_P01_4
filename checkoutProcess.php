@@ -24,6 +24,7 @@ if($_POST) //Post Data received from Shopping cart page.
 		$row = $result->fetch_array();
 		
 
+		//Check if the quantity of product that user is buying is more than the inventory list
 		if ($row["Quantity"] < $item["quantity"]) {
 			echo "Product $productId: $item[name] is out of stock!<br />";
 			echo "Please return to shopping cart to amend your purchase.<br />";
