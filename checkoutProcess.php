@@ -66,7 +66,12 @@ if($_POST) //Post Data received from Shopping cart page.
     }
     else
     {
+		if ($_SESSION["Waived"] == 1) {
+			$_SESSION["ShipCharge"] = 0.00;
+		}
+		else {
         $_SESSION["ShipCharge"] = 10.00;
+		}
     }
 		
 	
