@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient( rgba(87, 87, 87, 0.5), rgba(87, 87, 87, 0.5)), url('../Images/baby.jpg');
+    background-image: linear-gradient( rgba(244, 192, 252, 0.5), rgba(244, 192, 252, 0.5)), url('../Images/baby.jpg');
     background-size: 100%;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
@@ -42,18 +42,16 @@ body {
 }
 
 .search-button {
-    background-color: #DAAFF4;
-    color: #4E004A;
-    border: none;
-    border-radius: 50px;
-    width: 100px;
-    height: 35px;
+    background-color: #4E004A;
+    color: white;
+    border-radius: 0px 50px 50px 0px;
+    border: 1px solid #4E004A;
 }
 
 .search-button:hover {
-    color: #ffffff;
+    background-color: white;
+    color: #4E004A;
     font-weight: bold;
-    border: 1px solid #4E004A;
 }
 
 .login-button,
@@ -95,11 +93,54 @@ body {
     border-radius: 15px;
     box-shadow: 2.5px 2.5px #4E004A;
 }
-
-.add-to-cart .btn-qty {
-    width: 52px;
-    height: 46px;
+.searchbar {
+    border-radius: 50px 0px 0px 50px;
 }
 
-.add-to-cart .btn { border-radius: 0; }
+.minbar,
+.maxbar,
+.salebar {
+    border-radius: 0;
+}
 
+.searchbar,
+.minbar,
+.maxbar,
+.salebar {
+    border: 1px solid #4E004A;
+}
+
+
+/* .salebar {
+    border-radius: 0px 50px 50px 0px;
+} */
+
+.searchbar:focus,
+.minbar:focus,
+.maxbar:focus,
+.salebar:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px;
+}
+
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #c67605;
+}
