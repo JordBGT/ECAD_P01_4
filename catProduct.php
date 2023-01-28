@@ -7,8 +7,10 @@ include("header.php"); // Include the Page Layout header
 <!-- Display Page Header - Category's name is read 
      from the query string passed from previous page -->
 <div class="row" style="padding:5px">
-	<div class="col-12">
-		<span class="page-title"><?php echo "$_GET[catName]"; ?></span>
+	<div class="col-12 text-center">
+		<span class="page-title" style="color: #4E004A;"><?php echo "$_GET[catName]"; ?></span>
+		<p>Select a product to view its details</p>
+
 	</div>
 </div>
 
@@ -31,44 +33,49 @@ $stmt->close();
 //Display each product in a row
 while ($row = $result ->fetch_array()){
 	echo "<div class='row' style='padding:5px'>"; // Start of row
-	//Left column - display a text link showing product's name,
-	//     			display the selling price in a new paragraph
 	$product = "productDetails.php?pid=$row[ProductID]";
 	$formattedPrice = number_format($row['Price'], 2);
 	$formattedOfferedPrice = number_format($row['OfferedPrice'], 2);
 	$isOffered = $row['Offered'];
 	$offerStartDate = $row['OfferStartDate'];
 	$offerEndDate = $row['OfferEndDate'];
-	echo "<div class='col-8'>";
-	// Display the product name with a link, enlarge the link
-	//if the product is offered, append a "on offer" after the product name with red color
+
+	echo "<div class='col-12 productitem-container'>";
+    echo "<div class='row p-4'>";
+    echo "<div class='col-md-2'></div>";
+    echo "<div class='col-md-4 my-auto'>";
+
 	if($isOffered == 1 && $offerStartDate <= date("Y-m-d") && $offerEndDate >= date("Y-m-d")){
-		echo "<p><a href='$product' style='font-size:1.5em; color:blue'>$row[ProductTitle] <span style='color:red'>(Now On Offer!!)</span></a></p>";
+		echo "<p class='text-left m-2'><a class='category-link' href='$product' style='font-size:1.5em'>$row[ProductTitle]<span style='color:red'>(Now On Offer!!)</a></p>";
 	}else{
-		echo "<p><a href='$product' style='font-size:1.5em; color:blue'>$row[ProductTitle]</a></p>";
+		echo "<p class='text-left m-2'><a class='category-link' href='$product' style='font-size:1.5em'>$row[ProductTitle]</a></p>";
+
 	}
 
 	if($isOffered == 1 && $offerStartDate <= date("Y-m-d") && $offerEndDate >= date("Y-m-d")){
-		echo "<p>Original Price: <span style='text-decoration:line-through'>S$ $formattedPrice</span> </p>";
-		echo "<p><span style='font-weight:bold; color:red; font-size:1.5em'>Offered Price: S$ $formattedOfferedPrice</span></p>";
+		echo "<p class='text-left m-2'>Original Price: <span style='text-decoration:line-through'>S$ $formattedPrice</span> </p>";
+		echo "<p class='text-left m-2'><span style='font-weight:bold; color:red; font-size:1.5em'>Offered Price: S$ $formattedOfferedPrice</span></p>";
 	}else{
-		echo "<p style='font-size:1.5em'>Price: <span style='font-weight:bold; color:red;'> S$ $formattedPrice</span></p>";
+		echo "<p class='text-left m-2' style='font-size:1.5em'>Price: <span style='font-weight:bold; color:red;'> S$ $formattedPrice</span></p>";
 	}
+
+
+
+
 	
+    echo "</div>"; 
 
 	$img = "./Images/products/$row[ProductImage]";
-	//display image with a link to product details page, set the image size to 200px
-	echo "<div><a href=$product><img src=$img width='200px'></a></div>";
-	echo "</div>";
-	//Right column - display the add to cart function
-	echo "<div class='col-4'>";
-	
-
-	echo "</div>";
-	echo "</div>"; // End of row
-	echo "<hr style='border:1px solid #ccc'>";
+    echo "<div class='col-md-4 text-center'><a href='$product'><img src='$img' width='200px'></a></div>";
+    echo "<div class='col-md-2'></div>";
+    echo "</div>";
+    echo "</div>"; 
+    echo "</div>"; // End of row
+    // add some space between each category, with a horizontal line
+    // echo "<hr style='border:1px solid #ccc'>";
     echo "<div style='height:20px'></div>";
-	
+
+
 }
 
 // To Do:  Ending ....
