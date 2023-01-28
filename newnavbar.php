@@ -59,15 +59,15 @@ if(isset($_SESSION["ShopperName"])) {
                             <div class="col-sm-2 px-0 input-group-append">
                                 <input class="form-control maxbar" name="max_price" id="max_price" type="number" placeholder="Max" />
                             </div>
-
+                            <div class="col-sm-2 px-0 input-group-append">
+                                <button class="search-button px-3" type="submit">Search</button>
+                                </button>
+                            </div>
                             <div class="col-sm-2 px-0 input-group-append">
                             <input type="checkbox" id="on-offer" name="on-offer" value="1">
                             <label for="on-offer">Currently On Offer</label> 
                             </div>
-                            <div class="col-sm-1 px-0 input-group-append">
-                                <button class="search-button px-3" type="submit">Search</button>
-                                </button>
-                            </div>
+
                         </div>
                     </form>
                 </div>
