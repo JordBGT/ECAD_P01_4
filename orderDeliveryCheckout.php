@@ -191,7 +191,21 @@ if ($result->num_rows > 0) {
                 echo "<p>You have chosen the Express Delivery for your Order!<p>";
                 echo "Sub Total: S$".number_format($_SESSION["SubTotal"],2);
                 echo"<br/>";
-                echo "Delivery Fee: S$10";
+                //if subtotal is more than 200, delivery fee is 0
+                $expressFee = 0;
+                if($_SESSION["SubTotal"] > 200)
+                {
+                    echo "Delivery Fee: S$0.00";
+                    echo "<br/>";
+                    $_SESSION["Waived"] = 1;
+                    $expressFee = 0;
+                }
+                else{
+                    echo "Delivery Fee: S$10";
+                    echo "<br/>";
+                    $_SESSION["Waived"] = 0;
+                    $expressFee = 10;
+                }
                 echo "<br/>";
                 echo "GST (Tax %) : $tax %";
                 echo "<br/>";
@@ -199,7 +213,7 @@ if ($result->num_rows > 0) {
                 echo "GST: S$ $taxAmount";
                 echo "<br/>";
                 // Adding Delivery Fee and Tax Amount to Total Amount
-                $totalAmount = $_SESSION["SubTotal"] + 10 + $taxAmount;
+                $totalAmount = $_SESSION["SubTotal"] + $expressFee + $taxAmount;
 
                 echo "<p style='font-size:20px'> 
 				Total = S$ $totalAmount";

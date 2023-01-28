@@ -23,6 +23,14 @@ if(isset($_SESSION["OrderID"])) {
         echo" As you have chosen Express Delivery, Your items will be delivered within 24 hours. Thank you for your purchase!</br>";
     }
 
+    //unset session variables
+    unset($_SESSION["OrderID"]);
+    unset($_SESSION["Items"]);
+    unset($_SESSION["ShipCharge"]);
+    unset($_SESSION["ShopperName"]);
+    unset($_SESSION["Waived"]);
+
+
     echo "<a href='index.php'>Continue shopping</a></p>";
 } 
 
