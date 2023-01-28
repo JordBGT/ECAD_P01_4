@@ -209,15 +209,19 @@ if ($result->num_rows > 0) {
                                     <h2 class='loginheader text-center' style='color: #4E004A;'>Delivery Details</h2>
                                 </div>
                                 <form action='checkoutProcess.php' method='post' >
-                                    <input type='text' name='BillName' id='BillName' class='form-control my-4 py-2' placeholder='Name' required/>
-                                    <input type='text' name='ShipPhone' id='ShipPhone' class='form-control my-4 py-2' placeholder='(65) 1234 5678' required/>
-				                    <input type='text' name='ShipEmail' id='ShipEmail' class='form-control my-4 py-2' placeholder='ecader@gmail.com' required/>
-				                    <input type='date' name='DeliveryDate' id='DeliveryDate' class='form-control my-4 py-2' placeholder='' required/>
-				                    <input type='text' name='DeliveryTime' id='DeliveryTime' class='form-control my-4 py-2' placeholder='1pm-3pm' required/>
-				                    <input type='text' name='Message' id='Message' class='form-control my-4 py-2' placeholder='Happy New Year!' required/>
-				                    <input type='text' name='BillAddress' id='BillAddress' class='form-control my-4 py-2' placeholder='Yung An Road,Block 334' required/>
-				                    <input type='text' name='BillPhone' id='BillPhone' class='form-control my-4 py-2' placeholder='(65) 1234 5678' required/>
-				                    <input type='text' name='BillEmail' id='BillEmail' class='form-control my-4 py-2' placeholder='ecader@gmail.com' required/>
+                                    <p style='font-weight: bold;'>* Shipping Information</p>
+                                    <input type='text' name='ShipPhone' id='ShipPhone' class='form-control my-4 py-2' placeholder='Shipping Phone (65) 1234 5678' required/>
+				                    <input type='text' name='ShipEmail' id='ShipEmail' class='form-control my-4 py-2' placeholder='Shipping Email (ecader@gmail.com)' required/>
+                                    <p style='font-weight: bold;'>* Delivery Date & Time</p>
+				                    <input type='date' name='DeliveryDate' id='DeliveryDate' class='form-control my-4 py-2' placeholder='Delivery Date' required/>
+				                    <input type='text' name='DeliveryTime' id='DeliveryTime' class='form-control my-4 py-2' placeholder='Delivery Time (1pm-3pm)' required/>
+                                    <p style='font-weight: bold;'>* Message</p>
+				                    <input type='text' name='Message' id='Message' class='form-control my-4 py-2' placeholder='Message (Happy New Year!)' required/>
+                                    <p style='font-weight: bold;'>* Billing Information</p>
+                                    <input type='text' name='BillName' id='BillName' class='form-control my-4 py-2' placeholder='Billing Name' required/>
+				                    <input type='text' name='BillAddress' id='BillAddress' class='form-control my-4 py-2' placeholder='Billing Address (Yung An Road,Block 334)' required/>
+				                    <input type='text' name='BillPhone' id='BillPhone' class='form-control my-4 py-2' placeholder='Billing Phone (65) 1234 5678' required/>
+				                    <input type='text' name='BillEmail' id='BillEmail' class='form-control my-4 py-2' placeholder='Billing Email (ecader@gmail.com)' required/>
 
                                 <div class='text-center mt-3'>
                                 <input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>
@@ -334,22 +338,26 @@ if ($result->num_rows > 0) {
                 echo"
                 <div class='container p-5'>
                 <div class='row'>
-                <div class='col-12 col-sm-6 col-md-7 m-auto'>
+                <div class='col-12'>
                         <div class='card border-0 shadow'>
                             <div class='card-body' style='background-color: #DAAFF4; border-radius: 5px;'>
                                 <div class='m-auto'>
                                     <h2 class='loginheader text-center' style='color: #4E004A;'>Delivery Details</h2>
                                 </div>
                                 <form action='checkoutProcess.php' method='post' >
-                                    <input type='text' name='BillName' id='BillName' class='form-control my-4 py-2' placeholder='Name' required/>
-                                    <input type='text' name='ShipPhone' id='ShipPhone' class='form-control my-4 py-2' placeholder='(65) 1234 5678' required/>
-				                    <input type='text' name='ShipEmail' id='ShipEmail' class='form-control my-4 py-2' placeholder='ecader@gmail.com' required/>
-				                    <input type='date' name='DeliveryDate' id='DeliveryDate' class='form-control my-4 py-2' placeholder='' required/>
-				                    <input type='text' name='DeliveryTime' id='DeliveryTime' class='form-control my-4 py-2' placeholder='1pm-3pm' required/>
-				                    <input type='text' name='Message' id='Message' class='form-control my-4 py-2' placeholder='Happy New Year!' required/>
-				                    <input type='text' name='BillAddress' id='BillAddress' class='form-control my-4 py-2' placeholder='Yung An Road,Block 334' required/>
-				                    <input type='text' name='BillPhone' id='BillPhone' class='form-control my-4 py-2' placeholder='(65) 1234 5678' required/>
-				                    <input type='text' name='BillEmail' id='BillEmail' class='form-control my-4 py-2' placeholder='ecader@gmail.com' required/>
+                                    <p style='font-weight: bold;'>* Shipping Information</p>
+                                    <input type='text' name='ShipPhone' id='ShipPhone' class='form-control my-4 py-2' placeholder='Shipping Phone (65) 1234 5678' required/>
+				                    <input type='text' name='ShipEmail' id='ShipEmail' class='form-control my-4 py-2' placeholder='Shipping Email (ecader@gmail.com)' required/>
+                                    <p style='font-weight: bold;'>* Delivery Date & Time</p>
+				                    <input type='date' name='DeliveryDate' id='DeliveryDate' class='form-control my-4 py-2' placeholder='Delivery Date' required/>
+				                    <input type='text' name='DeliveryTime' id='DeliveryTime' class='form-control my-4 py-2' placeholder='Delivery Time (1pm-3pm)' required/>
+                                    <p style='font-weight: bold;'>* Message</p>
+				                    <input type='text' name='Message' id='Message' class='form-control my-4 py-2' placeholder='Message (Happy New Year!)' required/>
+                                    <p style='font-weight: bold;'>* Billing Information</p>
+                                    <input type='text' name='BillName' id='BillName' class='form-control my-4 py-2' placeholder='Billing Name' required/>
+				                    <input type='text' name='BillAddress' id='BillAddress' class='form-control my-4 py-2' placeholder='Billing Address (Yung An Road,Block 334)' required/>
+				                    <input type='text' name='BillPhone' id='BillPhone' class='form-control my-4 py-2' placeholder='Billing Phone (65) 1234 5678' required/>
+				                    <input type='text' name='BillEmail' id='BillEmail' class='form-control my-4 py-2' placeholder='Billing Email (ecader@gmail.com)' required/>
 
                                 <div class='text-center mt-3'>
                                 <input type='image' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'>
