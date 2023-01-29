@@ -90,11 +90,11 @@ if (isset($_SESSION["Cart"])) {
 		echo "</div>"; //End of Bootstrap responsive table
 				
 		//Display the subtotal at the end of the shopping cart
-		echo "<p style='text-align:right; font-size:20px'>
+		echo "<p style='text-align:right; font-size:20px; padding-right:20px'>
               Subtotal = S$".number_format($subTotal, 2);
         $_SESSION["SubTotal"] = round($subTotal, 2);
 		//Add PayPal Checkout button on the shopping cart page
-		echo "<form method='post' action='orderDeliveryCheckout.php'>";
+		echo "<form method='post' action='orderDeliveryCheckout.php' style='display:flow-root; padding-right:20px;'>";
 		echo "<input type='submit' style='float:right;'>";
 		echo "</form></p>";
 	}
