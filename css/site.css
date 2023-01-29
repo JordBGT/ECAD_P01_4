@@ -1,6 +1,7 @@
 body {
     background-image: linear-gradient( rgba(244, 192, 252, 0.5), rgba(244, 192, 252, 0.5)), url('../Images/baby.jpg');
     background-size: 100%;
+    background-attachment: fixed;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
     overflow-x: hidden;
@@ -14,7 +15,7 @@ body {
 
 .cart-header {
     /*background-color: #0040FF;*/
-    background-color: #017CA7;
+    background-color: #4E004A;
     color: white;
 }
 
@@ -92,7 +93,9 @@ body {
     border: 1px solid #4E004A;
     border-radius: 15px;
     box-shadow: 2.5px 2.5px #4E004A;
+    background-color: white;
 }
+
 .searchbar {
     border-radius: 50px 0px 0px 50px;
 }
@@ -143,4 +146,16 @@ body {
 .label-warning[href],
 .badge-warning[href] {
     background-color: #c67605;
+}
+
+.card {
+    border: 1px solid #4E004A;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .form-control,
+    .search-button {
+        border-radius: 0px;
+    }
 }
