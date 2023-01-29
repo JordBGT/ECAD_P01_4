@@ -159,3 +159,10 @@ body {
         border-radius: 0px;
     }
 }
+
+.feedback-subject {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-size: 20px;
+    color: #4E004A;
+}

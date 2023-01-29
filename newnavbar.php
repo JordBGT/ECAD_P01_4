@@ -14,6 +14,9 @@ if(isset($_SESSION["ShopperName"])) {
     //after shopper has logged in.
     $content1 = "Welcome <b>$_SESSION[ShopperName]!</b>";
     $content2 = "<li class='nav-item'>
+                 <a class='nav-link' href='feedback.php'>Feedback</a></li>
+                 <li class='nav-item'>
+                <li class='nav-item'>
                  <a class='nav-link' href='viewprofile.php'>View Profile</a></li>
                  <li class='nav-item'>
                  <a class='nav-link' href='logout.php'>Logout</a></li>
