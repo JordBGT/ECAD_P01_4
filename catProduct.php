@@ -10,7 +10,6 @@ include("header.php"); // Include the Page Layout header
 	<div class="col-12 text-center">
 		<span class="page-title" style="color: #4E004A;"><?php echo "$_GET[catName]"; ?></span>
 		<p>Select a product to view its details</p>
-
 	</div>
 </div>
 
