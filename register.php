@@ -84,9 +84,9 @@ function validateForm()
                                 Password Recovery
                             </h6>
                             <label class="registerform-label pl-1" for="question">Choose a question</label>
-                            <input type="text" name="question" id="question" class="form-control mb-4 py-2" placeholder="What is my favourite food?">
+                            <input type="text" name="question" id="question" class="form-control mb-4 py-2" placeholder="What is my favourite food?" required>
                             <label class="registerform-label pl-1" for="answer">Enter the answer for your question</label>
-                            <input type="text" name="answer" id="answer" class="form-control mb-4 py-2" placeholder="Chicken rice">
+                            <input type="text" name="answer" id="answer" class="form-control mb-4 py-2" placeholder="Chicken rice" required>
                         </div>
                         <div class="text-center mx-auto mt-3">
                             <button class="btn btn-primary register-button">Register</button>

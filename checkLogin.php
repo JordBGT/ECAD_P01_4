@@ -49,8 +49,10 @@ window.location = "index.php";
 <?php
 	// exit;
 }
-echo "<p class='text-center mt-6'style='color:red; margin-top: 50px;'>Invalid login credentials.<br>
-    <a href='login.php'>Return to login page</a></p>";;
+
+	echo "<div class='d-flex flex-column justify-content-center'>
+        <h3 class='text-center mt-6'style='color:red; margin-top: 50px;'>Invalid login credentials.</h3>
+		<a class='text-center' href='login.php'>Return to login page</a></div>";
 
 //Include the Page Layout footer
 include("footer.php");

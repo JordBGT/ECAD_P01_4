@@ -28,8 +28,8 @@ if(isset($_SESSION["ShopperName"])) {
 ?>
 <!-- To Do 3 (Practical 1) - 
      Display a navbar which is visible before or after collapsing -->
-<nav class="navbar navbar-expand-md bg-custom navbar-light">
-    <a href="#" class="navbar-brand mb-0">
+<nav class="navbar navbar-expand-lg bg-custom navbar-light">
+    <a href="index.php" class="navbar-brand mb-0">
     <img src="Images/logo.png" alt="Logo" class="d-inline-block align-top">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -39,16 +39,15 @@ if(isset($_SESSION["ShopperName"])) {
 </nav>
 <!-- To Do 4 (Practical 1) - 
      Define a collapsible navbar -->
-<nav class="navbar navbar-expand-md bg-custom sticky-top" style="border-bottom: 1px solid #4E004A">
+<nav class="navbar navbar-expand-lg bg-custom sticky-top" style="border-bottom: 1px solid #4E004A">
     <!-- Collapsible part of navbar -->
     <div class="collapse navbar-collapse bg-custom" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
-    
             <li>
-                <div class="navsearch mx-auto" style="width:80%;"> 
+                <div class="navsearch mx-auto"> 
                     <form name="frmSearch " method="get" action="search.php">
                         <div class="form-group row m-0 ">
-                            <div class="col-sm-5 px-0">
+                            <div class="col-sm-4 px-0">
                                 <input class="form-control searchbar" name="keywords" id="keywords" type="search" placeholder="Search for a product here" />
                             </div>
 
@@ -65,9 +64,8 @@ if(isset($_SESSION["ShopperName"])) {
                             </div>
                             <div class="col-sm-2 px-0 input-group-append">
                             <input type="checkbox" id="on-offer" name="on-offer" value="1">
-                            <label for="on-offer">Currently On Offer</label> 
+                            <label class="my-auto px-1 text-center" for="on-offer">Sale?</label> 
                             </div>
-
                         </div>
                     </form>
                 </div>

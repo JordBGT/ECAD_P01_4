@@ -8,12 +8,14 @@ include("header.php");
 <div class="container p-5">
     <div class="row">
         <div class="col-8 m-auto">
-            <div class="card border-0 shadow">
+            <div class="card shadow">
                 <div class="card-body" style="background-color: #DAAFF4; border-radius: 5px;">
                     <div class="row">
                         <h2 class="col-8 loginheader text-center" style="color: #4E004A;">Account Details</h2>
                         <div class="col-4 text-center m-auto">
+                            <a href="editProfile.php">
                                 <button class="btn btn-primary editprofile-button">Edit Profile</button>
+                            </a>
                         </div>
                     </div>
 <?php
@@ -47,6 +49,8 @@ while ($row = $result->fetch_array()) {
     echo "<div class='detailborder px-5'><p class='text-center my-auto p-2'>$address</p></div></div>";
     echo "<div class='d-flex-col justify-content-center mb-3'><p class='font-weight-bold my-1 text-center'>Phone Number</p>";
     echo "<div class='detailborder px-5'><p class='text-center my-auto p-2'>$phone</p></div></div>";
+    echo "<div class='d-flex-col justify-content-center mb-3'><p class='font-weight-bold my-1 text-center'>Birth Date</p>";
+    echo "<div class='detailborder px-5'><p class='text-center my-auto p-2'>$birthDate</p></div></div>";
 }
 ?>            
                 </div>

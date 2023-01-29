@@ -99,12 +99,17 @@ if (isset($_SESSION["Cart"])) {
 		echo "</form></p>";
 	}
 	else {
-		echo "<h3 style='text-align:center; color:red;'>Empty shopping cart!</h3>";
+		echo "<div class='d-flex flex-column justify-content-center'>
+        <h3 class='text-center mt-6'style='color:red; margin-top: 50px;'>Empty shopping cart!</h3>
+                <a class='text-center' href='category.php'>Check out our products!</a></div>";
 	}
 	$conn->close(); //Close database connection
 }
 else {
-	echo "<h3 style='text-align:center; color:red;'>Empty shopping cart!</h3>";
+	// echo "<h3 style='text-align:center; color:red;'>Empty shopping cart!</h3>";
+    echo "<div class='d-flex flex-column justify-content-center'>
+        <h3 class='text-center mt-6'style='color:red; margin-top: 50px;'>Empty shopping cart!</h3>
+                <a class='text-center' href='category.php'>Check out our products!</a></div>";
 }
 echo "</div>"; //End of container
 include("footer.php"); //Include the Page Layout footer

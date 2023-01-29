@@ -1,5 +1,5 @@
 <!-- display products on offer-->
-<section style="background-color: #eee;">
+<section>
   <div class="text-center container py-5">
     <h4 class="mt-4 mb-5"><strong>Products on offer</strong></h4>
 
