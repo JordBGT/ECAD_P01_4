@@ -2,6 +2,7 @@
 <section>
   <div class="text-center container py-5">
     <h4 class="mt-4 mb-5" style="color: #4E004A;"><strong>Products on offer</strong></h4>
+    
 
 
 <?php
@@ -24,10 +25,11 @@ while ($row = $result ->fetch_array()){
     $formattedPrice = number_format($row['OfferedPrice'], 2);
     $productImage = $row['ProductImage'];
 
-    if($productCount == 4){
+    if($productCount % 3 == 1){
         
         echo "</div>";
         echo "<div class='row'>";
+
     }
 
     echo "<div class='col-lg-4 col-md-12 mb-4 d-flex'>";
@@ -55,9 +57,9 @@ while ($row = $result ->fetch_array()){
     echo "</div>";
     echo "</div>";
     
-    if($productCount == 4){
+    if($productCount % 4 == 0){
         echo "</div>";
-        // echo "<div class='row'>";
+        echo "</div>";
     }
 }
 
