@@ -5,11 +5,11 @@ $PayPalApiPassword 	= 'R4KARXM7EVWUCDH3'; //Paypal API password
 $PayPalApiSignature = 'ASdWakEKtVrAmM1IZzt.jNsrIEsSA2fM18lC6OGUyABhKE7iISI.c1bV'; //Paypal API Signature
 $PayPalCurrencyCode = 'SGD'; 	//Paypal Currency Code
 //URL to redirect to after PayPal has complete the online payment
-// $PayPalReturnURL = 'http://localhost:8081/BaobeiComfort/checkoutProcess.php';
-$PayPalReturnURL 	= 'http://localhost/ASG/ECAD_P01_4/checkoutProcess.php'; 
+$PayPalReturnURL = 'http://localhost:8081/BaobeiComfort/checkoutProcess.php';
+// $PayPalReturnURL 	= 'http://localhost/ASG/ECAD_P01_4/checkoutProcess.php'; 
 //URL to redirect to if user clicks cancel                
-// $PayPalCancelURL = 'http://localhost:8081/BaobeiComfort/shoppingCart.php'; 
- $PayPalCancelURL = 'http://localhost/ASG/ECAD_P01_4/shoppingCart.php'; 
+$PayPalCancelURL = 'http://localhost:8081/BaobeiComfort/shoppingCart.php'; 
+//  $PayPalCancelURL = 'http://localhost/ASG/ECAD_P01_4/shoppingCart.php'; 
 
            	    
 function PPHttpPost($methodName_, $nvpStr_, $PayPalApiUsername, $PayPalApiPassword, 

@@ -95,7 +95,9 @@ if (isset($_SESSION["Cart"])) {
         $_SESSION["SubTotal"] = round($subTotal, 2);
 		//Add PayPal Checkout button on the shopping cart page
 		echo "<form method='post' action='orderDeliveryCheckout.php' style='display:flow-root; padding-right:20px;'>";
-		echo "<input type='submit' style='float:right;'>";
+
+        //display a submit button to proceed to checkout
+        echo "<input type='submit' name='checkout' value='Proceed to Checkout' class='btn btn-primary' style='float:right; margin-top:10px;'/>";
 		echo "</form></p>";
 	}
 	else {

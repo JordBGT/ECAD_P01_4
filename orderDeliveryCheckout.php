@@ -75,15 +75,19 @@ if ($result->num_rows > 0) {
         echo "<br/>";
         echo "<td>";
         echo "<form method = 'post' style='padding-left:20px'>";
-        echo "Mode of Delivery: ";
-        echo "<select name= 'mod'>";
-        echo "<option value='Normal'>Normal Delivery ($5.00) </option>";
-        echo "<option value ='Express'>Express Delivery ($10.00) </option>";
+        //after click submit button, the default dropdown value will be retained
+        //display a label for the dropdown list
+        echo "<label for='deliveryMode'>Mode of Delivery:</label>";
+        echo "<select name='mod' style='width: 200px; height: 30px;'>";
+        echo "<option value=''>Select Mode of Delivery</option>";
+        echo "<option value='Normal'>Normal Delivery  ($5.00)</option>";
+        echo "<option value='Express'>Express Delivery ($10.00)</option>";
         echo "</select>";
-
-        echo "<input type='submit' name='submit'>";
+        echo "<input type='submit' name='submit' style='width: 100px; height: 30px;'>";
         echo "</form>";
-        echo"<td>";
+        echo "</td>";
+        echo "</p>";
+
 
         // Retrive gst from database
         $qry2 = "SELECT * FROM gst WHERE EffectiveDate < curdate()
@@ -188,7 +192,7 @@ if ($result->num_rows > 0) {
                                 <div class='m-auto'>
                                     <h2 class='loginheader text-center' style='color: #4E004A;'>Payment Details</h2>
                                 </div>";
-                echo "<p style ='font-size:20px'> You have chosen the Normal Delivery for your Order!<p>";
+                echo "<p style ='font-size:20px'> You have chosen the Express Delivery for your Order!<p>";
                 echo " <p style = 'font-size:20px'> Sub Total: S$".number_format($_SESSION["SubTotal"],2);
                 echo"<br/>";
                 
@@ -213,7 +217,7 @@ if ($result->num_rows > 0) {
                 echo "GST: S$ $taxAmount";
                 echo "<br/>";
                 // Adding Delivery Fee and Tax Amount to Total Amount
-                $totalAmount = $_SESSION["SubTotal"] + 10 + $taxAmount;
+                $totalAmount = $_SESSION["SubTotal"] + $expressFee + $taxAmount;
 
                 echo "<p style='font-size:30px; font-weight: bold;'> 
 				Total = S$ $totalAmount";
