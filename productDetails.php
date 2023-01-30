@@ -77,13 +77,23 @@ while ($row = $result->fetch_array()){
     while ($row = $result->fetch_array()){
     if ($row["Quantity"] <= 0){
         echo "<h2 style='color:red'>Out of Stock</h2>";
+        echo "</div>";
+
+        echo "</div>";
+
+
+
+
+
     }else{
         echo "<form action='cartFunctions.php' method='post'>";
         echo "<input type='hidden' name='action' value='add' />";
         echo "<input type='hidden' name='product_id' value='$pid' />";
 
-        echo "<span class='title'>Quantity:</span>";
-        echo "<input type='number' name='quantity' value='1'min='1' max='10' style='width:60px' required/>";
+        
+        echo "<span class='title' style='font-size:2em;'>Quantity:</span>";
+        echo "<input type='number' name='quantity' value='1' min='1' max='10' style='width:80px; height:47px; font-size:1.5em;' required/>";
+        // echo "<input type='number' name='quantity' value='1'min='1' max='10' style='width:60px' required/>";
         echo "<button class='btn btn-primary btn-lg btn-brand btn-full-width' type='submit'>Add to Cart</button>";
         echo "</form>";
         echo "</div>";

@@ -50,7 +50,7 @@ while ($row = $result ->fetch_array()){
     echo "<h4 class='card-title mb-3'>$productName</h4>";
     echo "</a>";
     echo "<h6 class ='mb-3'><s>S$$originalPrice</s><strong class='ms-2 text-danger'> S$$formattedPrice</strong></h6>";
-    echo "<a href='$product' class='btn btn-primary btn-lg'>View</a>";
+    echo "<a href='$product' class='btn btn-primary editprofile-button'>View</a>";
     echo "</div>";
     echo "</div>";
     echo "</div>";
@@ -59,9 +59,8 @@ while ($row = $result ->fetch_array()){
         echo "</div>";
         // echo "<div class='row'>";
     }
-
-
-
 }
 
 ?>
+
+

@@ -1,6 +1,4 @@
 <!-- display products on offer-->
-
-
 <?php
 session_start();
 include("header.php"); // Include the Page Layout header
@@ -42,8 +40,8 @@ if (isset($_GET["keywords"]) && trim($_GET['keywords']) != "") {
     }
      else {
         $qry = "SELECT * FROM product WHERE (Offered = 0 AND (ProductTitle LIKE ? OR ProductDesc LIKE ?) AND Price >= ? AND Price <= ?) OR
-         (Offered = 1 AND (OfferStartDate > NOW() AND OfferEndDate < NOW()) AND (ProductTitle LIKE ? OR ProductDesc LIKE ?) AND OfferedPrice >= ? AND OfferedPrice <= ?) OR
-            (Offered = 1 AND (OfferStartDate < NOW() AND OfferEndDate < NOW()) OR (OfferStartDate > NOW() AND OfferEndDate > NOW()) AND (ProductTitle LIKE ? OR ProductDesc LIKE ?) AND Price >= ? AND Price <= ?)";
+                                            (Offered = 1 AND (OfferStartDate > NOW() AND OfferEndDate < NOW()) AND (ProductTitle LIKE ? OR ProductDesc LIKE ?) AND OfferedPrice >= ? AND OfferedPrice <= ?) OR
+                                            (Offered = 1 AND ((OfferStartDate < NOW() AND OfferEndDate < NOW()) OR (OfferStartDate > NOW() AND OfferEndDate > NOW())) AND (ProductTitle LIKE ? OR ProductDesc LIKE ?) AND Price >= ? AND Price <= ?)";
         $stmt = $conn->prepare($qry);
         $stmt->bind_param("ssiissiissii", $keywords, $keywords, $min_price, $max_price, $keywords, $keywords, $min_price, $max_price, $keywords, $keywords, $min_price, $max_price);
     }
