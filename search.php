@@ -1,4 +1,9 @@
-<!-- display products on offer-->
+
+
+  <!-- <div class="text-center container py-5"> -->
+    <!-- <h4 class="mt-4 mb-5" style="color: #4E004A;"><strong>Products on offer</strong></h4> -->
+
+
 <?php
 session_start();
 include("header.php"); // Include the Page Layout header
@@ -50,29 +55,45 @@ if (isset($_GET["keywords"]) && trim($_GET['keywords']) != "") {
     $result = $stmt->get_result();
     $stmt->close();
     $conn->close();
-
+    echo "<div class='text-center container py-5'>";
+    echo "<div class='row'>";
     // Display the list of products in a table
     if ($result->num_rows > 0) {
-        echo "<div class='row'>";
-        echo "<div class='col-sm-12'></div>";
-        echo "</div>";
-        echo "<div style='width:50%; margin:auto; margin-top: 2.5%'>";
-        echo "<div class='col-sm-2'></div>";
-        echo "<div class='col-sm-8' style='padding:5px'>";
+
         echo "<span class='page-title' style='font-size:2em'>Search result for <span style = 'color: red;'>$_GET[keywords]</span>:</span>";
         echo "</div>";
-        echo "<div class='col-sm-2'></div>";
-        echo "</div>";
 
-        while ($row = $result->fetch_array()) {
-            echo "<div class='row'>";
-            echo "<div class='col-sm-12'></div>";
+        echo "<div class='row'>";
+        while ($row = $result ->fetch_array()){
+            $product = "productDetails.php?pid=$row[ProductID]";
+            $productName = $row['ProductTitle'];
+            $originalPrice = number_format($row['Price'], 2);
+            $formattedPrice = number_format($row['OfferedPrice'], 2);
+            $productImage = $row['ProductImage'];
+            echo "<div class='col-lg-4 col-md-12 mb-4 d-flex'>";
+            echo "<div class='card'>";
+            echo "<div class='bg-image hover-zoom ripple ripple-surface ripple-surface-light' data-mdb-ripple-color='light'>";
+            echo "<img src='./Images/products/$productImage' class='w-100' />";
+            echo "<a href='$product'>";
+            echo "<div class='mask'>";
+            echo "<div class='d-flex justify-content-center align-items-center h-100'>";
             echo "</div>";
-            echo "<div style='width:50%; margin:auto; margin-top: 0.5%'>";
-            echo "<div class='col-sm-12' style='padding:5px'>";
-            echo "<p><a href='productDetails.php?pid=$row[ProductID]' style='font-size:1.5em'>$row[ProductTitle]</a></p>";
+            echo "</div>";
+            echo "<div class='hover-overlay'>";
+            echo "<div class='mask' style='background-color: rgba(251, 251, 251, 0.15)'></div>";
+            echo "</div>";
+            echo "</a>";
+            echo "</div>";
+            echo "<div class='card-body'>";
+            echo "<a href='$product' class='text-reset text-decoration-none'>";
+            echo "<h4 class='card-title mb-3'>$productName</h4>";
+            echo "</a>";
+            echo "<h6 class ='mb-3'><s>S$$originalPrice</s><strong class='ms-2 text-danger'> S$$formattedPrice</strong></h6>";
+            echo "<a href='$product' class='btn btn-primary editprofile-button'>View</a>";
             echo "</div>";
             echo "</div>";
+            echo "</div>";
+
         }
 
     } else {
@@ -89,6 +110,7 @@ if (isset($_GET["keywords"]) && trim($_GET['keywords']) != "") {
         echo "</div>";
 
     }
+    echo "</div>";
     echo "</div>";
 	// To Do (DIY): End of Code
 }
