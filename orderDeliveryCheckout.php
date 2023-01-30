@@ -116,8 +116,8 @@ if ($result->num_rows > 0) {
                                 <div class='m-auto'>
                                     <h2 class='loginheader text-center' style='color: #4E004A;'>Payment Details</h2>
                                 </div>";
-                echo "<p>You have chosen the Normal Delivery for your Order!<p>";
-                echo "Sub Total: S$".number_format($_SESSION["SubTotal"],2);
+                echo "<p style ='font-size:20px'> You have chosen the Normal Delivery for your Order!<p>";
+                echo " <p style = 'font-size:20px'> Sub Total: S$".number_format($_SESSION["SubTotal"],2);
                 echo"<br/>";
                 echo "Delivery Fee: S$5";
                 echo "<br/>";
@@ -129,7 +129,7 @@ if ($result->num_rows > 0) {
                 // Adding Delivery Fee and Tax Amount to Total Amount
                 $totalAmount = $_SESSION["SubTotal"] + 5 + $taxAmount;
 
-                echo "<p style='font-size:20px'> 
+                echo "<p style='font-size:30px; font-weight: bold;'> 
 				Total = S$ $totalAmount";
                 echo "</div>";
                 echo "</div>";
@@ -188,9 +188,10 @@ if ($result->num_rows > 0) {
                                 <div class='m-auto'>
                                     <h2 class='loginheader text-center' style='color: #4E004A;'>Payment Details</h2>
                                 </div>";
-                echo "<p>You have chosen the Express Delivery for your Order!<p>";
-                echo "Sub Total: S$".number_format($_SESSION["SubTotal"],2);
+                echo "<p style ='font-size:20px'> You have chosen the Normal Delivery for your Order!<p>";
+                echo " <p style = 'font-size:20px'> Sub Total: S$".number_format($_SESSION["SubTotal"],2);
                 echo"<br/>";
+                
                 //if subtotal is more than 200, delivery fee is 0
                 $expressFee = 0;
                 if($_SESSION["SubTotal"] > 200)
@@ -206,16 +207,15 @@ if ($result->num_rows > 0) {
                     $_SESSION["Waived"] = 0;
                     $expressFee = 10;
                 }
-                echo "<br/>";
                 echo "GST (Tax %) : $tax %";
                 echo "<br/>";
 
                 echo "GST: S$ $taxAmount";
                 echo "<br/>";
                 // Adding Delivery Fee and Tax Amount to Total Amount
-                $totalAmount = $_SESSION["SubTotal"] + $expressFee + $taxAmount;
+                $totalAmount = $_SESSION["SubTotal"] + 10 + $taxAmount;
 
-                echo "<p style='font-size:20px'> 
+                echo "<p style='font-size:30px; font-weight: bold;'> 
 				Total = S$ $totalAmount";
                 echo "</div>";
                 echo "</div>";
