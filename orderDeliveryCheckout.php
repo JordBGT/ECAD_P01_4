@@ -67,15 +67,15 @@ if ($result->num_rows > 0) {
 				
 
 		// Display the subtotal at the end of the shopping cart
-		echo "<p style='text-align:right; font-size:20px'> 
+		echo "<p style='text-align:right; font-size:20px; padding-right:20px'>
 				Subtotal = S$".number_format($subTotal,2);
 		$_SESSION["SubTotal"] = round($subTotal,2);
         
         //Displaying and getting input for Mode of Delivery
         echo "<br/>";
-        echo"<td>";
-        echo "<form method = 'post'>";
-        echo"Mode of Delivery: ";
+        echo "<td>";
+        echo "<form method = 'post' style='padding-left:20px'>";
+        echo "Mode of Delivery: ";
         echo "<select name= 'mod'>";
         echo "<option value='Normal'>Normal Delivery ($5.00) </option>";
         echo "<option value ='Express'>Express Delivery ($10.00) </option>";

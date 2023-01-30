@@ -1,7 +1,7 @@
 <!-- display products on offer-->
 <section>
   <div class="text-center container py-5">
-    <h4 class="mt-4 mb-5"><strong>Products on offer</strong></h4>
+    <h4 class="mt-4 mb-5" style="color: #4E004A;"><strong>Products on offer</strong></h4>
 
 
 <?php
@@ -62,5 +62,4 @@ while ($row = $result ->fetch_array()){
 }
 
 ?>
-
 
