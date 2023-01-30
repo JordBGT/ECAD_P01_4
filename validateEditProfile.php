@@ -50,7 +50,7 @@ if ($result->num_rows <= 1 && $newemail == $currentemail) {
     WHERE ShopperID = (?)";
     $stmt = $conn->prepare($qry);
     // "ssssss" - 9 string parameters
-    $stmt->bind_param("ssdsssi", $newname, $newemail, $newbirthdate, $newcountry, $newaddress, $newphone,$currentshopperid);
+    $stmt->bind_param("ssssssi", $newname, $newemail, $newbirthdate, $newcountry, $newaddress, $newphone,$currentshopperid);
 
     if ($stmt->execute()) { // SQL statement executed successfully
         // Successful message and Shopper ID

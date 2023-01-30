@@ -84,7 +84,7 @@ echo "
                                 <label class='registerform-label pl-1' for='country'>Country</label>
                                 <input type='text' name='country' id='country' class='form-control mb-4 py-2' placeholder='$country' value='$country'>
                                 <label class='registerform-label pl-1' for='address'>Address</label>
-                                <textarea type='text' name='address' id='address' class='form-control mb-4 py-2' placeholder='$address' value='$address'></textarea>
+                                <input type='text' name='address' id='address' class='form-control mb-4 py-2' placeholder='$address' value='$address'></input>
                                 <label class='registerform-label pl-1' for='phone'>Phone Number (8 digits)</label>
                                 <input type='text' name='phone' id='phone' class='form-control mb-4 py-2' placeholder='$phone' value='$phone'>
                             </div>

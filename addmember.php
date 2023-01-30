@@ -32,7 +32,7 @@ if ($result->num_rows <= 0) {
     $qry = "INSERT INTO Shopper (Name, Email, Password, BirthDate, Country, Address, Phone, PwdQuestion, PwdAnswer) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($qry);
     // "ssssss" - 9 string parameters
-    $stmt->bind_param("sssdsssss", $name, $email, $password, $birthdate, $country, $address, $phone, $question, $answer);
+    $stmt->bind_param("sssssssss", $name, $email, $password, $birthdate, $country, $address, $phone, $question, $answer);
 
     if ($stmt->execute()) { // SQL statement executed successfully
         // Retrieve the Shopper ID assigned to the new shopper
