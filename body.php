@@ -36,7 +36,6 @@ while ($row = $result ->fetch_array()){
     echo "<div class='card'>";
     echo "<div class='bg-image hover-zoom ripple ripple-surface ripple-surface-light' data-mdb-ripple-color='light'>";
     echo "<img src='./Images/products/$productImage' class='w-100' />";
-    echo "<a href='$product'>";
     echo "<div class='mask'>";
     echo "<div class='d-flex justify-content-center align-items-center h-100'>";
     echo "<h5><span class='badge bg-danger ms-2'>Offer</span></h5>";
@@ -45,7 +44,6 @@ while ($row = $result ->fetch_array()){
     echo "<div class='hover-overlay'>";
     echo "<div class='mask' style='background-color: rgba(251, 251, 251, 0.15)'></div>";
     echo "</div>";
-    echo "</a>";
     echo "</div>";
     echo "<div class='card-body'>";
     echo "<a href='$product' class='text-reset text-decoration-none'>";

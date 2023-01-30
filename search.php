@@ -88,7 +88,14 @@ if (isset($_GET["keywords"]) && trim($_GET['keywords']) != "") {
             echo "<a href='$product' class='text-reset text-decoration-none'>";
             echo "<h4 class='card-title mb-3'>$productName</h4>";
             echo "</a>";
-            echo "<h6 class ='mb-3'><s>S$$originalPrice</s><strong class='ms-2 text-danger'> S$$formattedPrice</strong></h6>";
+            if ($row['Offered'] == 1 && $row['OfferStartDate'] <= date("Y-m-d") && $row['OfferEndDate'] >= date("Y-m-d")) {
+                echo "<h5><span class='badge bg-danger ms-2'>Offer</span></h5>";
+
+                echo "<h6 class ='mb-3'><s>S$$originalPrice</s><strong class='ms-2 text-danger'> S$$formattedPrice</strong></h6>";
+            } else {
+                echo "<h6 class='mb-3'><span>$$originalPrice</span></h6>";
+            }
+            // echo "<h6 class ='mb-3'><s>S$$originalPrice</s><strong class='ms-2 text-danger'> S$$formattedPrice</strong></h6>";
             echo "<a href='$product' class='btn btn-primary editprofile-button'>View</a>";
             echo "</div>";
             echo "</div>";
