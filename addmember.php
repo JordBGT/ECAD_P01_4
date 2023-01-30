@@ -42,11 +42,12 @@ if ($result->num_rows <= 0) {
             $_SESSION["ShopperID"] = $row["ShopperID"];
         }
         // Successful message and Shopper ID
-        $message = "Registration successful!<br>
-                    Your ShopperID is $_SESSION[ShopperID]<br/>";
+        $message = "<p class='text-center mt-5' style='color:red'>Registration successful!. <br>
+        <a href='index.php'>Return to homepage</a></p>";
 
         // // Save the Shopper Name in a session variable
         $_SESSION["ShopperName"] = $name;
+        $_SESSION["NumCartItem"] = 0;
     }
     else { // Error Message
         $message = "<p class='text-center' style='color:red'>Error in inserting records. <br>

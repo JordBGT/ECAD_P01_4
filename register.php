@@ -28,11 +28,13 @@ function validateForm()
             return false; //cancel submission
         }
     }
-    // Check that both question field and answer is either both null or both not null
-    if ((document.register.question.value != "" && document.register.answer.value == "") || (document.register.question.value == "" && document.register.answer.value != "")) {
+    // Check that both question field and answer are answered
+    if (document.register.question.value == "" || document.register.answer.value == "") {
         alert("Please check that both questions and answers are entered correctly!");
         return false;
     }
+
+
 
     return true;  // No error found
 }
@@ -83,9 +85,9 @@ function validateForm()
                             <h6 class="title pl-1 mb-3 text-center">
                                 Password Recovery
                             </h6>
-                            <label class="registerform-label pl-1" for="question">Choose a question</label>
+                            <label class="registerform-label pl-1" for="question">Choose a question <span class="required-indicator">*</span></label>
                             <input type="text" name="question" id="question" class="form-control mb-4 py-2" placeholder="What is my favourite food?" required>
-                            <label class="registerform-label pl-1" for="answer">Enter the answer for your question</label>
+                            <label class="registerform-label pl-1" for="answer">Enter the answer for your question <span class="required-indicator">*</span></label>
                             <input type="text" name="answer" id="answer" class="form-control mb-4 py-2" placeholder="Chicken rice" required>
                         </div>
                         <div class="text-center mx-auto mt-3">
